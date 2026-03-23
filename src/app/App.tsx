@@ -10,11 +10,17 @@ import { JokeBattle } from './components/JokeBattle';
 import { AgeGateModal } from './components/AgeGateModal';
 import { CensorToggle } from './components/CensorToggle';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
-import { Laugh, Heart, Trophy, Swords, Moon, Sun, Image as ImageIcon } from 'lucide-react';
+import { Laugh, Heart, Trophy, Swords, Moon, Sun, Image as ImageIcon, User, BarChart2 } from 'lucide-react';
 import { jokes } from './data/jokes';
 import riboLogo from '../assets/4f55b7e853d8fc4351fdb96487e91bfce54b09b5.png';
 import { StickerCreator, Sticker } from './components/StickerCreator';
 import { StickersTab } from './components/StickersTab';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
+import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
+import { auth } from '../lib/firebase';
+import { MoodDashboard } from './components/MoodDashboard';
+import { AuthModal } from './components/AuthModal';
 
 interface VoteData {
   funny: number;
@@ -35,6 +41,7 @@ function getTodayKey() {
 }
 
 export default function App() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string>('todas');
   const [currentJokeIndex, setCurrentJokeIndex] = useState(0);
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -50,8 +57,15 @@ export default function App() {
   const [censorMode, setCensorMode] = useState(true);
   const [ageGateOpen, setAgeGateOpen] = useState(false);
   const [stickers, setStickers] = useState<Sticker[]>([]);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [user, setUser] = useState<FirebaseUser | null>(null);
 
   useEffect(() => {
+    // Firebase Auth Listener
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
     const storedFavorites = localStorage.getItem('favoriteJokes');
     const storedLikes = localStorage.getItem('likedJokes');
     const storedVotes = localStorage.getItem('jokeVotes');
@@ -95,6 +109,8 @@ export default function App() {
     } else {
       setTimeout(() => setMoodPickerOpen(true), 600);
     }
+
+    return () => unsubscribe();
   }, []);
 
   const handleToggleDarkMode = () => {
@@ -301,6 +317,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 via-rose-50 to-purple-100 dark:from-neutral-950 dark:via-purple-950/20 dark:to-neutral-950 transition-colors duration-500">
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+      />
+      
       {/* Mood Picker Modal */}
       <MoodPicker
         isOpen={moodPickerOpen}
@@ -322,6 +344,21 @@ export default function App() {
         <div className="relative overflow-hidden flex flex-col items-center justify-center mb-10 py-12 px-6 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/60 dark:border-neutral-700/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1">
           {/* Controls row */}
           <div className="self-stretch flex items-center justify-end gap-3 mb-6">
+            <LanguageSwitcher />
+            <button
+               onClick={() => user ? auth.signOut() : setIsAuthModalOpen(true)}
+               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
+               title={user ? 'Sair' : 'Entrar'}
+            >
+               {user && user.photoURL ? (
+                 <img src={user.photoURL} alt="User" className="w-5 h-5 rounded-full" />
+               ) : (
+                 <User className="w-4 h-4" />
+               )}
+               <span className="text-sm font-medium hidden sm:inline">
+                 {user ? t('app.logout') : t('app.login')}
+               </span>
+            </button>
             <CensorToggle censorMode={censorMode} onToggle={handleToggleCensor} />
             <button
               onClick={handleToggleDarkMode}
@@ -334,7 +371,7 @@ export default function App() {
                 <Moon className="w-4 h-4" />
               )}
               <span className="text-sm font-medium hidden sm:inline">
-                {darkMode ? 'Claro' : 'Noturno'}
+                {darkMode ? t('app.themeLight') : t('app.themeDark')}
               </span>
             </button>
           </div>
@@ -345,10 +382,10 @@ export default function App() {
             className="h-48 md:h-56 w-auto mb-6 drop-shadow-lg hover:scale-105 transition-transform duration-300 mx-auto"
           />
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 mb-3">
-            RIBO
+            {t('app.title')}
           </h1>
           <p className="text-center text-neutral-600 dark:text-neutral-400 text-base md:text-lg max-w-md leading-relaxed">
-            Seu repositório de humor inteligente para descompressão e lazer
+            {t('app.subtitle')}
           </p>
 
           {/* Mood Badge */}
@@ -365,18 +402,18 @@ export default function App() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-red-900 dark:text-red-300 mb-0.5">
-                Modo Adulto ativo
+                {t('censor.active')}
               </p>
               <p className="text-xs text-red-700 dark:text-red-400">
-                Conteúdo +18 desbloqueado. Categorias de Adulto e Religião agora visíveis.
+                {t('censor.description')}
               </p>
             </div>
             <button
-              onClick={handleToggleCensor}
-              className="flex-shrink-0 text-xs font-medium text-red-700 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 transition-colors underline"
-            >
-              Desligar
-            </button>
+               onClick={handleToggleCensor}
+               className="flex-shrink-0 text-xs font-medium text-red-700 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 transition-colors underline"
+             >
+               {t('censor.turnOff')}
+             </button>
           </div>
         )}
 
@@ -388,17 +425,17 @@ export default function App() {
             </div>
             <div className="flex-1 min-w-0">
               <p className={`text-sm font-semibold ${todayMood.text} mb-0.5`}>
-                Modo {todayMood.label}
+                {t('app.moodBanner.mode', { mood: t(`moods.labels.${todayMood.id}`) })}
               </p>
               <p className={`text-xs ${todayMood.text} opacity-80`}>
-                Piadas selecionadas para o teu humor de hoje
+                {t('app.moodBanner.subtitle')}
               </p>
             </div>
             <button
               onClick={() => handleCategoryChange('todas')}
               className={`flex-shrink-0 text-xs font-medium ${todayMood.text} hover:opacity-100 transition-opacity underline`}
             >
-              Ver todas
+              {t('app.moodBanner.viewAll')}
             </button>
           </div>
         )}
@@ -410,16 +447,16 @@ export default function App() {
               className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
             >
               <Laugh className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Piadas</span>
-              <span className="sm:hidden">Piadas</span>
+              <span className="hidden sm:inline">{t('tabs.jokes')}</span>
+              <span className="sm:hidden">{t('tabs.jokes')}</span>
             </TabsTrigger>
             <TabsTrigger
               value="favoritos"
               className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
             >
               <Heart className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Favoritos</span>
-              <span className="sm:hidden">Fav</span>
+              <span className="hidden sm:inline">{t('tabs.favorites')}</span>
+              <span className="sm:hidden">{t('tabs.favorites')}</span>
               {favorites.length > 0 && (
                 <span className="ml-1.5 bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-400 text-xs px-2 py-0.5 rounded-full font-semibold">
                   {favorites.length}
@@ -431,8 +468,8 @@ export default function App() {
               className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
             >
               <Trophy className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Ranking</span>
-              <span className="sm:hidden">Rank</span>
+              <span className="hidden sm:inline">{t('tabs.ranking')}</span>
+              <span className="sm:hidden">{t('tabs.ranking')}</span>
               {totalVotes > 0 && (
                 <span className="ml-1.5 bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-400 text-xs px-2 py-0.5 rounded-full font-semibold">
                   {totalVotes}
@@ -444,8 +481,8 @@ export default function App() {
               className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
             >
               <Swords className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Batalha</span>
-              <span className="sm:hidden">Bat</span>
+              <span className="hidden sm:inline">{t('tabs.battle')}</span>
+              <span className="sm:hidden">{t('tabs.battle')}</span>
               {userJokes.length > 0 && (
                 <span className="ml-1.5 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-400 text-xs px-2 py-0.5 rounded-full font-semibold">
                   {userJokes.length}
@@ -457,13 +494,21 @@ export default function App() {
               className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
             >
               <ImageIcon className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">Stickers</span>
-              <span className="sm:hidden">Sticks</span>
+              <span className="hidden sm:inline">{t('tabs.stickers')}</span>
+              <span className="sm:hidden">{t('tabs.stickers')}</span>
               {stickers.length > 0 && (
                 <span className="ml-1.5 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-400 text-xs px-2 py-0.5 rounded-full font-semibold">
                   {stickers.length}
                 </span>
               )}
+            </TabsTrigger>
+            <TabsTrigger
+              value="dashboard"
+              className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
+            >
+              <BarChart2 className="w-4 h-4 mr-2" />
+              <span className="hidden sm:inline">{t('tabs.dashboard')}</span>
+              <span className="sm:hidden text-[10px]">{t('tabs.dashboard').substring(0, 4)}</span>
             </TabsTrigger>
           </TabsList>
 
@@ -493,7 +538,7 @@ export default function App() {
               />
             ) : (
               <div className="text-center py-16 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800">
-                <p className="text-neutral-500 dark:text-neutral-400 text-sm">Nenhuma piada nesta categoria ainda.</p>
+                <p className="text-neutral-500 dark:text-neutral-400 text-sm">{t('jokes.emptyCategory')}</p>
               </div>
             )}
           </TabsContent>
@@ -507,8 +552,12 @@ export default function App() {
             />
           </TabsContent>
 
-          <TabsContent value="ranking">
+          <TabsContent value="ranking" className="space-y-6">
             <CringeRanking votes={votes} />
+          </TabsContent>
+
+          <TabsContent value="dashboard">
+             <MoodDashboard />
           </TabsContent>
 
           <TabsContent value="batalha" className="space-y-6">

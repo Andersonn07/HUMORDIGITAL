@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Plus, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export interface UserJoke {
   id: string;
@@ -18,23 +19,18 @@ interface JokeCreatorProps {
 }
 
 export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
+  const { t } = useTranslation();
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('anedotas');
   const [isExpanded, setIsExpanded] = useState(false);
+  const jokeCategories = ['anedotas', 'secas', 'negro', 'trocadilhos', 'inteligentes', 'observacionais'];
 
-  const categories = [
-    { id: 'anedotas', label: 'Anedota Clássica' },
-    { id: 'secas', label: 'Piada Seca' },
-    { id: 'negro', label: 'Humor Negro' },
-    { id: 'trocadilhos', label: 'Trocadilho' },
-    { id: 'inteligentes', label: 'Piada Inteligente' },
-    { id: 'observacional', label: 'Humor Observacional' },
-  ];
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!content.trim() || !author.trim()) {
       return;
     }
@@ -63,7 +59,7 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
         className="w-full py-5 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl shadow-sm hover:shadow-md transition-all hover:scale-[1.01] flex items-center justify-center gap-3 group"
       >
         <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-        <span className="font-semibold text-base">Criar Minha Piada</span>
+        <span className="font-semibold text-base">{t('jokeCreator.button')}</span>
         <Sparkles className="w-5 h-5 group-hover:animate-pulse" />
       </button>
     );
@@ -73,20 +69,20 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
     <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-orange-300 dark:border-orange-800 p-6 transition-colors duration-300">
       <div className="flex items-center gap-2 mb-5">
         <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-500" />
-        <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100">Cria a Tua Piada</h3>
+        <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100">{t('jokeCreator.title')}</h3>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="author" className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            O Teu Nome
+            {t('jokeCreator.nameLabel')}
           </label>
           <input
             id="author"
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            placeholder="Como te chamas?"
+            placeholder={t('jokeCreator.namePlaceholder')}
             maxLength={30}
             className="w-full px-4 py-2.5 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-500"
             required
@@ -95,7 +91,7 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
 
         <div>
           <label htmlFor="category" className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            Categoria
+            {t('jokeCreator.categoryLabel')}
           </label>
           <select
             id="category"
@@ -103,9 +99,9 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
             onChange={(e) => setCategory(e.target.value)}
             className="w-full px-4 py-2.5 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
           >
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.label}
+            {jokeCategories.map((catId) => (
+              <option key={catId} value={catId}>
+                {t(`categories.names.${catId}`)}
               </option>
             ))}
           </select>
@@ -113,13 +109,13 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
 
         <div>
           <label htmlFor="content" className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-            A Tua Piada
+            {t('jokeCreator.jokeLabel')}
           </label>
           <textarea
             id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="Escreve aqui a tua piada mais engraçada..."
+            placeholder={t('jokeCreator.jokePlaceholder')}
             rows={4}
             maxLength={500}
             className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-500 dark:placeholder-neutral-500"
@@ -139,14 +135,14 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
             }}
             className="flex-1 px-4 py-3 border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors font-semibold"
           >
-            Cancelar
+            {t('jokeCreator.cancel')}
           </button>
           <button
             type="submit"
             disabled={!content.trim() || !author.trim()}
             className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
           >
-            Publicar Piada
+            {t('jokeCreator.publish')}
           </button>
         </div>
       </form>

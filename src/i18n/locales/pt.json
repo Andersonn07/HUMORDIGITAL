@@ -1,0 +1,240 @@
+{
+  "app": {
+    "title": "RIBO",
+    "subtitle": "O seu repositório de humor inteligente para descompressão e lazer",
+    "themeLight": "Claro",
+    "themeDark": "Noturno",
+    "login": "Entrar",
+    "logout": "Sair"
+  },
+  "censor": {
+    "active": "Modo Adulto ativo",
+    "description": "Sexualidade · Religião · Humor Negro Pesado",
+    "turnOff": "Desativar",
+    "matureTitle": "Conteúdo +18",
+    "matureSubtitle": "Desbloqueia o modo adulto para ver esta piada",
+    "toggle": {
+      "activeTitle": "Modo Censura ATIVO — clica para desbloquear +18",
+      "inactiveTitle": "Conteúdo +18 DESBLOQUEADO — clica para censurar",
+      "labelActive": "Censura",
+      "labelInactive": "🔞 +18"
+    }
+  },
+  "ageGate": {
+    "title": "Conteúdo para Adultos",
+    "subtitle": "Esta secção contém piadas sobre",
+    "tags": ["Sexualidade", "Religião", "Humor Explícito"],
+    "warning": "Este conteúdo é destinado a maiores de <0>18 anos</0>. Ao continuar, confirmas que tens idade suficiente e consentes em visualizar este tipo de humor.",
+    "question": "Tens 18 ou mais anos?",
+    "confirm": "Sim, tenho 18+ anos — Entrar",
+    "deny": "Não, sair",
+    "storageNote": "A preferência é guardada localmente no teu dispositivo."
+  },
+  "jokeCard": {
+    "like": "Curtir",
+    "favorite": "Favoritar",
+    "random": "Aleatória",
+    "keyboardHint": "Use ← → para navegar ou clique em \"Aleatória\""
+  },
+  "tabs": {
+    "jokes": "Piadas",
+    "favorites": "Favoritos",
+    "ranking": "Ranking",
+    "battle": "Batalha",
+    "stickers": "Stickers",
+    "dashboard": "Dashboard"
+  },
+  "stickers": {
+    "title": "Stickers / Memes",
+    "creator": {
+      "title": "Criar Novo Sticker",
+      "upload_prompt": "Toque aqui para escolher uma imagem",
+      "upload_sub": "Galeria ou Máquina Fotográfica",
+      "name_label": "Nome (Opcional)",
+      "name_placeholder": "Ex: Reação engraçada",
+      "submit": "Guardar Sticker",
+      "remove_title": "Remover imagem",
+      "default_name": "Sticker sem nome"
+    },
+    "tab": {
+      "collection": "A tua coleção",
+      "empty_title": "Nenhum sticker guardado ainda. Crie o seu primeiro acima!",
+      "delete_tip": "Apagar Sticker"
+    },
+    "errors": {
+      "invalid_image": "Por favor, selecione uma imagem válida."
+    }
+  },
+  "ranking": {
+    "tabs": {
+      "funny": "Hall da Fama",
+      "cringe": "Hall da Vergonha",
+      "contested": "As Polémicas"
+    },
+    "modes": {
+      "funny": {
+        "desc": "As piadas que a audiência considerou mais engraçadas"
+      },
+      "cringe": {
+        "desc": "As piadas mais cringe... que doem só de ler"
+      },
+      "contested": {
+        "desc": "As piadas que dividiram totalmente a audiência"
+      }
+    },
+    "empty": {
+      "title": "Sem votos ainda!",
+      "subtitle": "Navega pelas piadas e vite em cada uma para ver o ranking aparecer aqui."
+    },
+    "stats": {
+      "votes_one": "1 voto",
+      "votes_other": "{{count}} votos",
+      "jokes_one": "1 piada com votos • Continua a votar para mais resultados!",
+      "jokes_other": "{{count}} piadas com votos • Continua a votar para mais resultados!"
+    }
+  },
+  "favorites": {
+    "empty": {
+      "title": "Nenhum favorito ainda",
+      "subtitle": "Navegue pelas piadas e adicione suas favoritas aqui!"
+    },
+    "actions": {
+      "like": "Curtir",
+      "liked": "Curtido",
+      "remove": "Remover"
+    },
+    "stats": {
+      "one": "1 piada favorita",
+      "other": "{{count}} piadas favoritas"
+    }
+  },
+  "jokeCreator": {
+    "button": "Criar Minha Piada",
+    "title": "Cria a Tua Piada",
+    "nameLabel": "O Teu Nome",
+    "namePlaceholder": "Como te chamas?",
+    "categoryLabel": "Categoria",
+    "jokeLabel": "A Tua Piada",
+    "jokePlaceholder": "Escreve aqui a tua piada mais engraçada...",
+    "cancel": "Cancelar",
+    "publish": "Publicar Piada"
+  },
+  "jokeBattle": {
+    "empty": {
+      "title": "Nenhuma Piada Criada Ainda",
+      "subtitle": "Sê o primeiro a criar uma piada e começar a batalha!"
+    },
+    "sort": {
+      "hot": "Top",
+      "recent": "Recentes",
+      "controversial": "Polémicas"
+    },
+    "stats": {
+      "jokes_one": "1 Piada na Batalha",
+      "jokes_other": "{{count}} Piadas na Batalha",
+      "votes_one": "1 voto dado",
+      "votes_other": "{{count}} votos dados"
+    },
+    "deleteTip": "Eliminar piada",
+    "timeAgo": {
+      "now": "agora mesmo",
+      "min": "há {{count}}min",
+      "hour": "há {{count}}h",
+      "day": "há {{count}}d"
+    }
+  },
+  "dashboard": {
+    "title": "O seu Calendário de Humor",
+    "subtitle": "Estatísticas baseadas nos seus registos diários.",
+    "tooltipSuffix": "vezes",
+    "stats": {
+      "frequent": "Mais frequente",
+      "streak": "Dias Seguidos",
+      "total": "Total Registos"
+    }
+  },
+  "categories": {
+    "title": "Categorias",
+    "adultMode": "🔞 Modo Adulto desbloqueado",
+    "adultZone": "Zona Adulta",
+    "blockedContent": "Conteúdo bloqueado",
+    "unlockAdult": "Desbloqueia o <0>Modo Adulto</0> para aceder",
+    "names": {
+      "todas": "Todas",
+      "anedotas": "Anedotas Clássicas",
+      "secas": "Piadas Secas",
+      "negro": "Humor Negro",
+      "trocadilhos": "Trocadilhos",
+      "inteligentes": "Inteligentes",
+      "observacionais": "Observacionais",
+      "censurado": "Zona +18"
+    }
+  },
+  "moods": {
+    "title": "Como te sentes <0>hoje</0>?",
+    "subtitle_pick": "Escolhe o teu estado de espírito e recebe piadas à medida",
+    "subtitle_result": "Perfeito! Temos a piada certa para ti",
+    "view_jokes": "Ver piadas para este humor",
+    "view_all": "Ver todas as piadas",
+    "change_mood": "Mudar humor",
+    "labels": {
+      "feliz": "Feliz",
+      "animado": "Animado",
+      "relaxado": "Relaxado",
+      "neutro": "Neutro",
+      "triste": "Triste",
+      "irritado": "Irritado",
+      "cansado": "Cansado",
+      "bem_disposto": "Com Humor"
+    },
+    "descriptions": {
+      "feliz": "Tudo a correr bem!",
+      "animado": "Energia no máximo!",
+      "relaxado": "Modo zen ativado.",
+      "neutro": "Nem bom, nem mau.",
+      "triste": "Um dia mais difícil.",
+      "irritado": "Hoje ninguém presta...",
+      "cansado": "Preciso de uma sesta.",
+      "bem_disposto": "Pronto para rir de tudo!"
+    },
+    "suggestions": {
+      "feliz": "Que bom! Vamos manter o bom humor com anedotas clássicas! 🎉",
+      "animado": "Com essa energia, piadas inteligentes são o teu palco! 🧠⚡",
+      "relaxado": "Modo zen! Humor observacional para apreciar sem pressa. 🍃",
+      "neutro": "Tá bem, vamos ver se um trocadilho te anima um bocado... 🤓",
+      "triste": "Às vezes o humor negro é a melhor medicina. Vai com calma. 🖤",
+      "irritado": "Calma! Umas piadas secas vão ajudar a respirar fundo. 😤➡️😤",
+      "cansado": "Sem energia para grandes histórias? Piadas curtas e secas a caminho! 💤",
+      "bem_disposto": "Estás de boa! Todas as categorias estão abertas para ti! 🎭"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Criar Conta",
+    "email": "Endereço de Email",
+    "password": "Palavra-passe",
+    "forgotPassword": "Esqueceu a senha?",
+    "signIn": "Entrar",
+    "signUp": "registar-se",
+    "orContinueWith": "Ou continuar com",
+    "google": "Entrar com Google",
+    "noAccount": "Não tem conta?",
+    "hasAccount": "Já tem conta?",
+    "errorConfig": "Nota: Verifica se configuraste o Firebase em src/lib/firebase.ts",
+    "welcomeBack": "Bem-vindo de volta!",
+    "loginSubtitle": "Entre para guardar os seus favoritos e stickers.",
+    "registerSubtitle": "Junte-se à comunidade RIBO para partilhar o seu humor.",
+    "errors": {
+      "invalidEmail": "Email inválido.",
+      "userNotFound": "Utilizador não encontrado.",
+      "wrongPassword": "Palavra-passe incorreta.",
+      "emailInUse": "Este email já está em uso.",
+      "weakPassword": "A palavra-passe deve ter pelo menos 6 caracteres.",
+      "googleFailed": "Autenticação com Google cancelada ou falhou.",
+      "default": "Ocorreu um erro na autenticação."
+    }
+  },
+  "jokes": {
+    "emptyCategory": "Nenhuma piada nesta categoria ainda."
+  }
+}

@@ -62,11 +62,11 @@ export function MoodHistory({ entries, onDelete }: MoodHistoryProps) {
   return (
     <div className="space-y-4">
       <h3 className="text-xl font-semibold text-gray-800 mb-4">Seus registros</h3>
-      
+
       {entries.map((entry) => {
         const Icon = moodIcons[entry.mood];
         const colorClass = moodColors[entry.mood];
-        
+
         return (
           <div
             key={entry.id}
@@ -75,7 +75,7 @@ export function MoodHistory({ entries, onDelete }: MoodHistoryProps) {
             <div className={`${colorClass} p-3 rounded-full flex-shrink-0`}>
               <Icon className="w-6 h-6" />
             </div>
-            
+
             <div className="flex-grow">
               <div className="flex items-center gap-2 mb-1">
                 <span className="font-semibold text-gray-800">{entry.mood}</span>

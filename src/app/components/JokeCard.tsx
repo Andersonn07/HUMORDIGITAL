@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { Joke } from '../data/jokes';
 import { Button } from './ui/button';
 import { Heart, ThumbsUp, ChevronLeft, ChevronRight, Shuffle, EyeOff } from 'lucide-react';
@@ -42,6 +43,7 @@ export function JokeCard({
   onCringeVote,
   censorMode = true,
 }: JokeCardProps) {
+  const { t } = useTranslation();
   const jokeVotes = votes[joke.id] || { funny: 0, cringe: 0 };
   const userVote = userVotes[joke.id] || null;
   const isCensored = censorMode && joke.mature;
@@ -59,7 +61,7 @@ export function JokeCard({
       <div className="flex justify-between items-start mb-8">
         <span className={`inline-flex items-center gap-2 ${joke.mature ? 'bg-gradient-to-r from-red-500 to-rose-600' : 'bg-gradient-to-r from-orange-500 to-red-500'} text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-sm`}>
           {joke.mature && <span className="text-base">🔞</span>}
-          {joke.category}
+          {t(`categories.names.${joke.category}`)}
         </span>
         <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
           {currentIndex + 1} / {totalJokes}
@@ -81,9 +83,9 @@ export function JokeCard({
                   <EyeOff className="w-7 h-7 text-red-600 dark:text-red-400" />
                 </div>
                 <div className="bg-white dark:bg-neutral-900 rounded-2xl px-6 py-4 border border-red-200 dark:border-red-800 shadow-sm text-center max-w-[280px]">
-                  <p className="text-red-600 dark:text-red-400 font-semibold text-sm mb-1">🔞 Conteúdo +18</p>
+                  <p className="text-red-600 dark:text-red-400 font-semibold text-sm mb-1">{t('censor.matureTitle')}</p>
                   <p className="text-neutral-600 dark:text-neutral-400 text-xs leading-relaxed">
-                    Desbloqueia o modo adulto para ver esta piada
+                    {t('censor.matureSubtitle')}
                   </p>
                 </div>
               </div>
@@ -103,28 +105,26 @@ export function JokeCard({
             onClick={() => onLike(joke.id)}
             variant={isLiked ? 'default' : 'outline'}
             size="lg"
-            className={`flex-1 max-w-[160px] h-12 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
-              isLiked
+            className={`flex-1 max-w-[160px] h-12 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${isLiked
                 ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-orange-500/30 border-transparent'
                 : 'bg-white/50 backdrop-blur-sm dark:bg-neutral-800/50 hover:bg-orange-50 dark:hover:bg-orange-950/30 border border-white/60 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300'
-            }`}
+              }`}
           >
             <ThumbsUp className={`w-4 h-4 mr-2 ${isLiked ? 'fill-current' : ''}`} />
-            Curtir
+            {t('jokeCard.like')}
           </Button>
 
           <Button
             onClick={() => onFavorite(joke.id)}
             variant={isFavorite ? 'default' : 'outline'}
             size="lg"
-            className={`flex-1 max-w-[160px] h-12 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
-              isFavorite
+            className={`flex-1 max-w-[160px] h-12 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${isFavorite
                 ? 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-red-500/30 border-transparent'
                 : 'bg-white/50 backdrop-blur-sm dark:bg-neutral-800/50 hover:bg-red-50 dark:hover:bg-red-950/30 border border-white/60 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300'
-            }`}
+              }`}
           >
             <Heart className={`w-4 h-4 mr-2 ${isFavorite ? 'fill-current' : ''}`} />
-            Favoritar
+            {t('jokeCard.favorite')}
           </Button>
         </div>
       )}
@@ -158,7 +158,7 @@ export function JokeCard({
           className="flex-1 max-w-[200px] h-11 rounded-xl font-semibold bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
         >
           <Shuffle className="w-4 h-4 mr-2" />
-          Aleatória
+          {t('jokeCard.random')}
         </Button>
 
         <Button
@@ -174,7 +174,7 @@ export function JokeCard({
       {/* Dica de teclado */}
       <div className="mt-5 text-center">
         <p className="text-xs text-neutral-500 dark:text-neutral-500">
-          Use ← → para navegar ou clique em "Aleatória"
+          {t('jokeCard.keyboardHint')}
         </p>
       </div>
     </motion.div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { jokes } from '../data/jokes';
 import { Trophy, Skull, BarChart2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface VoteData {
   funny: number;
@@ -15,6 +16,7 @@ interface CringeRankingProps {
 type RankMode = 'funny' | 'cringe' | 'contested';
 
 export function CringeRanking({ votes }: CringeRankingProps) {
+  const { t } = useTranslation();
   const [mode, setMode] = useState<RankMode>('funny');
 
   const jokesWithVotes = jokes
@@ -39,21 +41,21 @@ export function CringeRanking({ votes }: CringeRankingProps) {
   const tabs: { id: RankMode; label: string; icon: React.ReactNode; color: string; activeColor: string }[] = [
     {
       id: 'funny',
-      label: 'Hall da Fama',
+      label: t('ranking.tabs.funny'),
       icon: <Trophy className="w-4 h-4" />,
       color: 'border-green-200 text-green-700',
       activeColor: 'bg-green-500 text-white border-green-500',
     },
     {
       id: 'cringe',
-      label: 'Hall da Vergonha',
+      label: t('ranking.tabs.cringe'),
       icon: <Skull className="w-4 h-4" />,
       color: 'border-red-200 text-red-700',
       activeColor: 'bg-red-500 text-white border-red-500',
     },
     {
       id: 'contested',
-      label: 'As Polémicas',
+      label: t('ranking.tabs.contested'),
       icon: <BarChart2 className="w-4 h-4" />,
       color: 'border-yellow-200 text-yellow-700',
       activeColor: 'bg-yellow-500 text-white border-yellow-500',
@@ -61,23 +63,15 @@ export function CringeRanking({ votes }: CringeRankingProps) {
   ];
 
   const getModeLabel = () => {
-    if (mode === 'funny') return { emoji: '🏆', desc: 'As piadas que a audiência considerou mais engraçadas' };
-    if (mode === 'cringe') return { emoji: '💀', desc: 'As piadas mais cringe... que doem só de ler' };
-    return { emoji: '⚔️', desc: 'As piadas que dividiram totalmente a audiência' };
+    if (mode === 'funny') return { emoji: '🏆', desc: t('ranking.modes.funny.desc') };
+    if (mode === 'cringe') return { emoji: '💀', desc: t('ranking.modes.cringe.desc') };
+    return { emoji: '⚔️', desc: t('ranking.modes.contested.desc') };
   };
 
   const modeInfo = getModeLabel();
 
   const getCategoryName = (cat: string) => {
-    const map: Record<string, string> = {
-      anedotas: 'Anedotas',
-      secas: 'Piadas Secas',
-      negro: 'Humor Negro',
-      trocadilhos: 'Trocadilhos',
-      inteligentes: 'Inteligentes',
-      observacionais: 'Observacionais',
-    };
-    return map[cat] || cat;
+    return t(`categories.names.${cat}`);
   };
 
   const getRankBadge = (index: number, mode: RankMode) => {
@@ -99,9 +93,8 @@ export function CringeRanking({ votes }: CringeRankingProps) {
           <button
             key={tab.id}
             onClick={() => setMode(tab.id)}
-            className={`flex-1 py-3 px-2 rounded-xl border transition-all duration-200 flex items-center justify-center gap-2 text-sm font-semibold ${
-              mode === tab.id ? tab.activeColor + ' shadow-sm' : `bg-white dark:bg-neutral-900 ${tab.color} dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800`
-            }`}
+            className={`flex-1 py-3 px-2 rounded-xl border transition-all duration-200 flex items-center justify-center gap-2 text-sm font-semibold ${mode === tab.id ? tab.activeColor + ' shadow-sm' : `bg-white dark:bg-neutral-900 ${tab.color} dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800`
+              }`}
           >
             {tab.icon}
             <span className="hidden sm:inline">{tab.label}</span>
@@ -119,9 +112,9 @@ export function CringeRanking({ votes }: CringeRankingProps) {
       {sorted.length === 0 ? (
         <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-16 text-center transition-colors duration-300">
           <p className="text-4xl mb-3">🗳️</p>
-          <p className="text-neutral-700 dark:text-neutral-300 text-base font-semibold mb-2">Sem votos ainda!</p>
+          <p className="text-neutral-700 dark:text-neutral-300 text-base font-semibold mb-2">{t('ranking.empty.title')}</p>
           <p className="text-neutral-500 dark:text-neutral-500 text-sm leading-relaxed">
-            Navega pelas piadas e vote em cada uma para ver o ranking aparecer aqui.
+            {t('ranking.empty.subtitle')}
           </p>
         </div>
       ) : (
@@ -158,7 +151,7 @@ export function CringeRanking({ votes }: CringeRankingProps) {
                         <span className="text-xs bg-gradient-to-r from-orange-500 to-red-500 text-white px-2.5 py-1 rounded-lg font-semibold">
                           {getCategoryName(joke.category)}
                         </span>
-                        <span className="text-xs text-neutral-500 dark:text-neutral-500 font-medium">{joke.total} voto{joke.total !== 1 ? 's' : ''}</span>
+                        <span className="text-xs text-neutral-500 dark:text-neutral-500 font-medium">{t('ranking.stats.votes', { count: joke.total })}</span>
                       </div>
 
                       <p className="text-neutral-800 dark:text-neutral-100 text-sm leading-relaxed mb-3 line-clamp-3">
@@ -196,7 +189,7 @@ export function CringeRanking({ votes }: CringeRankingProps) {
 
       {sorted.length > 0 && (
         <p className="text-center text-xs text-neutral-500 dark:text-neutral-500 py-2 font-medium">
-          {sorted.length} piada{sorted.length !== 1 ? 's' : ''} com votos • Continua a votar para mais resultados!
+          {t('ranking.stats.jokes', { count: sorted.length })}
         </p>
       )}
     </div>

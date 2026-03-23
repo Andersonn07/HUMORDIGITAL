@@ -1,0 +1,247 @@
+{
+  "app": {
+    "title": "RIBO — Digital Humor",
+    "subtitle": "Your daily dose of laughter, puns and dry jokes to brighten your day!",
+    "themeLight": "Light Mode",
+    "themeDark": "Dark Mode",
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "ranking": "Ranking",
+    "moodBanner": {
+      "mode": "{{mood}} Mode",
+      "subtitle": "Jokes selected for your mood today",
+      "viewAll": "See all"
+    }
+  },
+  "dashboard": {
+    "title": "Your Mood Calendar",
+    "subtitle": "Statistics based on your daily logs.",
+    "tooltipSuffix": "times",
+    "stats": {
+      "frequent": "Most frequent",
+      "streak": "Consecutive Days",
+      "total": "Total Logs"
+    }
+  },
+  "censor": {
+    "active": "Adult Mode active",
+    "description": "Sexuality · Religion · Heavy Dark Humor",
+    "turnOff": "Deactivate",
+    "matureTitle": "Adult Content +18",
+    "matureSubtitle": "Unlock adult mode to see this joke",
+    "toggle": {
+      "activeTitle": "Censorship Mode ACTIVE — click to unlock +18",
+      "inactiveTitle": "+18 Content UNLOCKED — click to censor",
+      "labelActive": "Censorship",
+      "labelInactive": "🔞 +18"
+    }
+  },
+  "ageGate": {
+    "title": "Adult Content",
+    "subtitle": "This section contains jokes about",
+    "tags": ["Sexuality", "Religion", "Explicit Humor"],
+    "warning": "This content is intended for those <0>18 years or older</0>. By continuing, you confirm that you are of legal age and consent to view this type of humor.",
+    "question": "Are you 18 or older?",
+    "confirm": "Yes, I am 18+ — Enter",
+    "deny": "No, exit",
+    "storageNote": "The preference is saved locally on your device."
+  },
+  "jokeCard": {
+    "like": "Like",
+    "favorite": "Favorite",
+    "random": "Random",
+    "keyboardHint": "Use ← → to navigate or click \"Random\""
+  },
+  "tabs": {
+    "jokes": "Jokes",
+    "favorites": "Favorites",
+    "battle": "Battle",
+    "stickers": "Stickers",
+    "dashboard": "Dashboard",
+    "ranking": "Ranking"
+  },
+  "stickers": {
+    "title": "Stickers / Memes",
+    "creator": {
+      "title": "Create New Sticker",
+      "upload_prompt": "Tap here to choose an image",
+      "upload_sub": "Gallery or Camera",
+      "name_label": "Name (Optional)",
+      "name_placeholder": "e.g., Funny reaction",
+      "submit": "Save Sticker",
+      "remove_title": "Remove image",
+      "default_name": "Unnamed sticker"
+    },
+    "tab": {
+      "collection": "Your collection",
+      "empty_title": "No stickers saved yet. Create your first one above!",
+      "delete_tip": "Delete Sticker"
+    },
+    "errors": {
+      "invalid_image": "Please select a valid image."
+    }
+  },
+  "ranking": {
+    "tabs": {
+      "funny": "Hall of Fame",
+      "cringe": "Hall of Shame",
+      "contested": "Controversial"
+    },
+    "modes": {
+      "funny": {
+        "desc": "Jokes that the audience found the funniest"
+      },
+      "cringe": {
+        "desc": "The most cringe jokes... that hurt just to read"
+      },
+      "contested": {
+        "desc": "Jokes that completely divided the audience"
+      }
+    },
+    "empty": {
+      "title": "No votes yet!",
+      "subtitle": "Browse through the jokes and vote on each one to see the ranking appear here."
+    },
+    "stats": {
+      "votes_one": "1 vote",
+      "votes_other": "{{count}} votes",
+      "jokes_one": "1 joke with votes • Keep voting for more results!",
+      "jokes_other": "{{count}} jokes with votes • Keep voting for more results!"
+    }
+  },
+  "favorites": {
+    "empty": {
+      "title": "No favorites yet",
+      "subtitle": "Browse through jokes and add your favorites here!"
+    },
+    "actions": {
+      "like": "Like",
+      "liked": "Liked",
+      "remove": "Remove"
+    },
+    "stats": {
+      "one": "1 favorite joke",
+      "other": "{{count}} favorite jokes"
+    }
+  },
+  "jokeCreator": {
+    "button": "Create My Joke",
+    "title": "Create Your Joke",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "What's your name?",
+    "categoryLabel": "Category",
+    "jokeLabel": "Your Joke",
+    "jokePlaceholder": "Write your funniest joke here...",
+    "cancel": "Cancel",
+    "publish": "Publish Joke"
+  },
+  "jokeBattle": {
+    "empty": {
+      "title": "No Jokes Created Yet",
+      "subtitle": "Be the first to create a joke and start the battle!"
+    },
+    "sort": {
+      "hot": "Hot",
+      "recent": "Recent",
+      "controversial": "Controversial"
+    },
+    "stats": {
+      "jokes_one": "1 Joke in Battle",
+      "jokes_other": "{{count}} Jokes in Battle",
+      "votes_one": "1 vote cast",
+      "votes_other": "{{count}} votes cast"
+    },
+    "deleteTip": "Delete joke",
+    "timeAgo": {
+      "now": "just now",
+      "min": "{{count}}min ago",
+      "hour": "{{count}}h ago",
+      "day": "{{count}}d ago"
+    }
+  },
+  "categories": {
+    "title": "Categories",
+    "adultMode": "🔞 Adult Mode unlocked",
+    "adultZone": "Adult Zone",
+    "blockedContent": "Blocked Content",
+    "unlockAdult": "Unlock <0>Adult Mode</0> to access",
+    "names": {
+      "todas": "All",
+      "anedotas": "Classic Jokes",
+      "secas": "Dry Jokes",
+      "negro": "Dark Humor",
+      "trocadilhos": "Puns",
+      "inteligentes": "Smart Jokes",
+      "observacionais": "Observational",
+      "censurado": "Zone +18"
+    }
+  },
+  "moods": {
+    "title": "How do you feel <0>today</0>?",
+    "subtitle_pick": "Choose your state of mind and get tailored jokes",
+    "subtitle_result": "Perfect! We have the right joke for you",
+    "view_jokes": "See jokes for this mood",
+    "view_all": "See all jokes",
+    "change_mood": "Change mood",
+    "labels": {
+      "feliz": "Happy",
+      "animado": "Excited",
+      "relaxado": "Relaxed",
+      "neutro": "Neutral",
+      "triste": "Sad",
+      "irritado": "Angry",
+      "cansado": "Tired",
+      "bem_disposto": "Humorous"
+    },
+    "descriptions": {
+      "feliz": "Everything is going well!",
+      "animado": "Energy at maximum!",
+      "relaxado": "Zen mode activated.",
+      "neutro": "Neither good nor bad.",
+      "triste": "A harder day.",
+      "irritado": "Nobody is good today...",
+      "cansado": "I need a nap.",
+      "bem_disposto": "Ready to laugh at everything!"
+    },
+    "suggestions": {
+      "feliz": "Great! Let's keep the good mood with classic jokes! 🎉",
+      "animado": "With that energy, smart jokes are your stage! 🧠⚡",
+      "relaxado": "Zen mode! Observational humor to enjoy without rush. 🍃",
+      "neutro": "Alright, let's see if a pun cheers you up a bit... 🤓",
+      "triste": "Sometimes dark humor is the best medicine. Take it easy. 🖤",
+      "irritado": "Calm down! Some dry jokes will help you breathe deeply. 😤➡️😤",
+      "cansado": "No energy for big stories? Short dry jokes on the way! 💤",
+      "bem_disposto": "You're good! All categories are open to you! 🎭"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Create Account",
+    "email": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "orContinueWith": "Or continue with",
+    "google": "Sign in with Google",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "errorConfig": "Note: Check if you configured Firebase in src/lib/firebase.ts",
+    "welcomeBack": "Welcome back!",
+    "loginSubtitle": "Sign in to save your favorites and stickers.",
+    "registerSubtitle": "Join the RIBO community to share your humor.",
+    "errors": {
+      "invalidEmail": "Invalid email.",
+      "userNotFound": "User not found.",
+      "wrongPassword": "Incorrect password.",
+      "emailInUse": "This email is already in use.",
+      "weakPassword": "Password must be at least 6 characters.",
+      "googleFailed": "Google sign-in cancelled or failed.",
+      "default": "An error occurred during authentication."
+    }
+  },
+  "jokes": {
+    "emptyCategory": "No jokes in this category yet."
+  }
+}

@@ -37,11 +37,10 @@ export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }
           whileTap={{ scale: 0.96 }}
           whileHover={{ scale: 1.02 }}
           onClick={() => onVote(jokeId, 'funny')}
-          className={`flex-1 max-w-[150px] py-3.5 px-4 rounded-xl border transition-all duration-200 flex flex-col items-center gap-1.5 ${
-            userVote === 'funny'
+          className={`flex-1 max-w-[150px] py-3.5 px-4 rounded-xl border transition-all duration-200 flex flex-col items-center gap-1.5 ${userVote === 'funny'
               ? 'bg-green-600 border-green-600 text-white shadow-sm'
               : 'bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 text-green-700 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-950/20 hover:border-green-400 dark:hover:border-green-700'
-          }`}
+            }`}
         >
           <span className="text-2xl">😂</span>
           <span className="text-sm font-bold">Engraçado!</span>
@@ -54,11 +53,10 @@ export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }
           whileTap={{ scale: 0.96 }}
           whileHover={{ scale: 1.02 }}
           onClick={() => onVote(jokeId, 'cringe')}
-          className={`flex-1 max-w-[150px] py-3.5 px-4 rounded-xl border transition-all duration-200 flex flex-col items-center gap-1.5 ${
-            userVote === 'cringe'
+          className={`flex-1 max-w-[150px] py-3.5 px-4 rounded-xl border transition-all duration-200 flex flex-col items-center gap-1.5 ${userVote === 'cringe'
               ? 'bg-red-600 border-red-600 text-white shadow-sm'
               : 'bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 hover:border-red-400 dark:hover:border-red-700'
-          }`}
+            }`}
         >
           <span className="text-2xl">😬</span>
           <span className="text-sm font-bold">Cringe!</span>

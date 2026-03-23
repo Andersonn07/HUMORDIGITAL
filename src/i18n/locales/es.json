@@ -1,0 +1,245 @@
+{
+  "app": {
+    "title": "RIBO — Humor Digital",
+    "subtitle": "¡Tu dosis diaria de risas, juegos de palabras y chistes secos para alegrar tu día!",
+    "themeLight": "Modo Claro",
+    "themeDark": "Modo Noche",
+    "login": "Login",
+    "logout": "Salir",
+    "moodBanner": {
+      "mode": "Modo {{mood}}",
+      "subtitle": "Chistes seleccionados para tu humor de hoy",
+      "viewAll": "Ver todos"
+    }
+  },
+  "censor": {
+    "active": "Modo Adulto activo",
+    "description": "Sexualidad · Religión · Humor Negro Pesado",
+    "turnOff": "Desactivar",
+    "matureTitle": "Contenido +18",
+    "matureSubtitle": "Desbloquea el modo adulto para ver este chiste",
+    "toggle": {
+      "activeTitle": "Modo Censura ACTIVO — haz clic para desbloquear +18",
+      "inactiveTitle": "Contenido +18 DESBLOQUEADO — haz clic para censurar",
+      "labelActive": "Censura",
+      "labelInactive": "🔞 +18"
+    }
+  },
+  "ageGate": {
+    "title": "Contenido para Adultos",
+    "subtitle": "Esta sección contiene chistes sobre",
+    "tags": ["Sexualidad", "Religión", "Humor Explícito"],
+    "warning": "Este contenido está destinado a mayores de <0>18 años</0>. Al continuar, confirmas que tienes edad suficiente y consientes ver este tipo de humor.",
+    "question": "¿Tienes 18 o más años?",
+    "confirm": "Sí, tengo 18+ años — Entrar",
+    "deny": "No, salir",
+    "storageNote": "La preferencia se guarda localmente en tu dispositivo."
+  },
+  "jokeCard": {
+    "like": "Me gusta",
+    "favorite": "Favorito",
+    "random": "Aleatorio",
+    "keyboardHint": "Usa ← → para navegar o haz clic en \"Aleatorio\""
+  },
+  "tabs": {
+    "jokes": "Bromas",
+    "favorites": "Favoritos",
+    "battle": "Batalla",
+    "stickers": "Stickers",
+    "dashboard": "Panel",
+    "ranking": "Ranking"
+  },
+  "stickers": {
+    "title": "Stickers / Memes",
+    "creator": {
+      "title": "Crear Nuevo Sticker",
+      "upload_prompt": "Toca aquí para elegir una imagen",
+      "upload_sub": "Galería o Cámara",
+      "name_label": "Nombre (Opcional)",
+      "name_placeholder": "Ej: Reacción graciosa",
+      "submit": "Guardar Sticker",
+      "remove_title": "Eliminar imagen",
+      "default_name": "Sticker sin nombre"
+    },
+    "tab": {
+      "collection": "Tu colección",
+      "empty_title": "Aún no hay stickers guardados. ¡Crea el primero arriba!",
+      "delete_tip": "Eliminar Sticker"
+    },
+    "errors": {
+      "invalid_image": "Por favor, selecciona una imagen válida."
+    }
+  },
+  "ranking": {
+    "tabs": {
+      "funny": "Salón de la Fama",
+      "cringe": "Salón de la Vergüenza",
+      "contested": "Los Polémicos"
+    },
+    "modes": {
+      "funny": {
+        "desc": "Los chistes que el público encontró más divertidos"
+      },
+      "cringe": {
+        "desc": "Los chistes más cringe... que duelen solo de leer"
+      },
+      "contested": {
+        "desc": "Los chistes que dividieron completamente al público"
+      }
+    },
+    "empty": {
+      "title": "¡Aún no hay votos!",
+      "subtitle": "Navega por los chistes y vota en cada uno para ver el ranking aparecer aquí."
+    },
+    "stats": {
+      "votes_one": "1 voto",
+      "votes_other": "{{count}} votos",
+      "jokes_one": "1 chiste con votos • ¡Sigue votando para más resultados!",
+      "jokes_other": "{{count}} chistes con votos • ¡Sigue votando para más resultados!"
+    }
+  },
+  "favorites": {
+    "empty": {
+      "title": "Aún no hay favoritos",
+      "subtitle": "¡Navega por los chistes y añade tus favoritos aquí!"
+    },
+    "actions": {
+      "like": "Me gusta",
+      "liked": "Te gusta",
+      "remove": "Eliminar"
+    },
+    "stats": {
+      "one": "1 chiste favorito",
+      "other": "{{count}} chistes favoritos"
+    }
+  },
+  "jokeCreator": {
+    "button": "Crear Mi Chiste",
+    "title": "Crea Tu Chiste",
+    "nameLabel": "Tu Nombre",
+    "namePlaceholder": "¿Cómo te llamas?",
+    "categoryLabel": "Categoría",
+    "jokeLabel": "Tu Chiste",
+    "jokePlaceholder": "Escribe aquí tu chiste más gracioso...",
+    "cancel": "Cancelar",
+    "publish": "Publicar Chiste"
+  },
+  "jokeBattle": {
+    "empty": {
+      "title": "Ningún Chiste Creado Aún",
+      "subtitle": "¡Sé el primero en crear un chiste y comenzar la batalla!"
+    },
+    "sort": {
+      "hot": "Top",
+      "recent": "Recientes",
+      "controversial": "Polémicos"
+    },
+    "stats": {
+      "jokes_one": "1 Chiste en Batalla",
+      "jokes_other": "{{count}} Chistes en Batalla",
+      "votes_one": "1 voto dado",
+      "votes_other": "{{count}} votos dados"
+    },
+    "deleteTip": "Eliminar chiste",
+    "timeAgo": {
+      "now": "ahora mismo",
+      "min": "hace {{count}}min",
+      "hour": "hace {{count}}h",
+      "day": "hace {{count}}d"
+    }
+  },
+  "dashboard": {
+    "title": "Tu Calendario de Humor",
+    "subtitle": "Estadísticas basadas en tus registros diarios.",
+    "tooltipSuffix": "veces",
+    "stats": {
+      "frequent": "Más frecuente",
+      "streak": "Días Seguidos",
+      "total": "Total Registros"
+    }
+  },
+  "categories": {
+    "title": "Categorías",
+    "adultMode": "🔞 Modo Adulto desbloqueado",
+    "adultZone": "Zona Adulta",
+    "blockedContent": "Contenido bloqueado",
+    "unlockAdult": "Desbloquea o <0>Modo Adulto</0> para acceder",
+    "names": {
+      "todas": "Todas",
+      "anedotas": "Chistes Clásicos",
+      "secas": "Chistes Secos",
+      "negro": "Humor Negro",
+      "trocadilhos": "Juegos de Palabras",
+      "inteligentes": "Chistes Inteligentes",
+      "observacionais": "Observacionales",
+      "censurado": "Zona +18"
+    }
+  },
+  "moods": {
+    "title": "¿Cómo te sientes <0>hoy</0>?",
+    "subtitle_pick": "Elige tu estado de ánimo y recibe chistes a medida",
+    "subtitle_result": "¡Perfecto! Tenemos el chiste adecuado para ti",
+    "view_jokes": "Ver chistes para este humor",
+    "view_all": "Ver todos los chistes",
+    "change_mood": "Cambiar humor",
+    "labels": {
+      "feliz": "Feliz",
+      "animado": "Animado",
+      "relaxado": "Relajado",
+      "neutro": "Neutro",
+      "triste": "Triste",
+      "irritado": "Irritado",
+      "cansado": "Cansado",
+      "bem_disposto": "Con Humor"
+    },
+    "descriptions": {
+      "feliz": "¡Todo va bien!",
+      "animado": "¡Energía al máximo!",
+      "relaxado": "Modo zen activado.",
+      "neutro": "Ni bueno ni malo.",
+      "triste": "Un día más difícil.",
+      "irritado": "Hoy nadie es bueno...",
+      "cansado": "Necesito una siesta.",
+      "bem_disposto": "¡Listo para reírte de todo!"
+    },
+    "suggestions": {
+      "feliz": "¡Qué bien! ¡Mantengamos el buen humor con chistes clásicos! 🎉",
+      "animado": "¡Con esa energía, los chistes inteligentes son tu escenario! 🧠⚡",
+      "relaxado": "¡Modo zen! Humor observacional para disfrutar sin prisas. 🍃",
+      "neutro": "Vale, veamos si un juego de palabras te anima un poco... 🤓",
+      "triste": "A veces el humor negro es la mejor medicina. Tómatelo con calma. 🖤",
+      "irritado": "¡Calma! Unos chistes secos te ayudarán a respirar hondo. 😤➡️😤",
+      "cansado": "¿Sin energía para grandes historias? ¡Chistes cortos y secos en camino! 💤",
+      "bem_disposto": "¡Estás bien! ¡Todas las categorías están abiertas para ti! 🎭"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Crear Cuenta",
+    "email": "Dirección de Email",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signIn": "Entrar",
+    "signUp": "Registrarse",
+    "orContinueWith": "O continuar con",
+    "google": "Entrar con Google",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "errorConfig": "Nota: Verifica si configuraste Firebase en src/lib/firebase.ts",
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "loginSubtitle": "Inicia sesión para guardar tus favoritos y stickers.",
+    "registerSubtitle": "Únete a la comunidad RIBO para compartir tu humor.",
+    "errors": {
+      "invalidEmail": "Email inválido.",
+      "userNotFound": "Usuario no encontrado.",
+      "wrongPassword": "Contraseña incorrecta.",
+      "emailInUse": "Este email ya está en uso.",
+      "weakPassword": "La contraseña debe tener al menos 6 caracteres.",
+      "googleFailed": "Autenticación con Google cancelada o falló.",
+      "default": "Ocurreu un error en la autenticación."
+    }
+  },
+  "jokes": {
+    "emptyCategory": "Aún no hay bromas en esta categoría."
+  }
+}

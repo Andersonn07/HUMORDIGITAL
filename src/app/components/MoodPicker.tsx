@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Sparkles, ArrowRight } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 
 export interface MoodOption {
   id: string;
@@ -123,6 +124,7 @@ interface MoodPickerProps {
 }
 
 export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestion, onClose }: MoodPickerProps) {
+  const { t } = useTranslation();
   const [hoveredMood, setHoveredMood] = useState<string | null>(null);
   const [step, setStep] = useState<'pick' | 'result'>(currentMood ? 'result' : 'pick');
   const [selectedMood, setSelectedMood] = useState<MoodOption | null>(currentMood);
@@ -174,12 +176,14 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
               <div className="flex justify-between items-start mb-5">
                 <div>
                   <h2 className="text-2xl text-gray-800 dark:text-gray-100" style={{ fontWeight: 700 }}>
-                    Como te sentes <span className="text-orange-500">hoje</span>?
+                    <Trans i18nKey="moods.title">
+                      Como te sentes <span className="text-orange-500">hoje</span>?
+                    </Trans>
                   </h2>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
                     {step === 'pick'
-                      ? 'Escolhe o teu estado de espírito e recebe piadas à medida'
-                      : 'Perfeito! Temos a piada certa para ti'}
+                      ? t('moods.subtitle_pick')
+                      : t('moods.subtitle_result')}
                   </p>
                 </div>
                 <button
@@ -211,11 +215,10 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
                             onClick={() => handleSelect(mood)}
                             onMouseEnter={() => setHoveredMood(mood.id)}
                             onMouseLeave={() => setHoveredMood(null)}
-                            className={`flex flex-col items-center gap-1.5 p-3 rounded-2xl border-2 transition-all duration-200 ${
-                              isHovered
+                            className={`flex flex-col items-center gap-1.5 p-3 rounded-2xl border-2 transition-all duration-200 ${isHovered
                                 ? `${mood.bg} ${mood.border} shadow-md`
                                 : 'border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 hover:border-gray-200 dark:hover:border-gray-600'
-                            }`}
+                              }`}
                           >
                             <motion.span
                               className="text-3xl"
@@ -225,7 +228,7 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
                               {mood.emoji}
                             </motion.span>
                             <span className={`text-xs text-center leading-tight ${isHovered ? mood.text : 'text-gray-600 dark:text-gray-300'}`} style={{ fontWeight: 600 }}>
-                              {mood.label}
+                              {t(`moods.labels.${mood.id}`)}
                             </span>
                           </motion.button>
                         );
@@ -243,7 +246,7 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
                             exit={{ opacity: 0, y: -4 }}
                             className="text-sm text-gray-500 dark:text-gray-400 italic"
                           >
-                            {moods.find(m => m.id === hoveredMood)?.description}
+                            {t(`moods.descriptions.${moods.find(m => m.id === hoveredMood)?.id}`)}
                           </motion.p>
                         )}
                       </AnimatePresence>
@@ -271,14 +274,14 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
                         </motion.div>
 
                         <h3 className={`text-xl mb-1 ${selectedMood.text}`} style={{ fontWeight: 700 }}>
-                          {selectedMood.label}
+                          {t(`moods.labels.${selectedMood.id}`)}
                         </h3>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm mb-5">{selectedMood.description}</p>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm mb-5">{t(`moods.descriptions.${selectedMood.id}`)}</p>
 
                         {/* Suggestion bubble */}
                         <div className={`${selectedMood.bg} border ${selectedMood.border} rounded-2xl p-4 mb-5 flex items-start gap-3 text-left`}>
                           <Sparkles className={`w-5 h-5 flex-shrink-0 mt-0.5 ${selectedMood.text}`} />
-                          <p className={`text-sm ${selectedMood.text}`}>{selectedMood.suggestion}</p>
+                          <p className={`text-sm ${selectedMood.text}`}>{t(`moods.suggestions.${selectedMood.id}`)}</p>
                         </div>
 
                         {/* Buttons */}
@@ -290,7 +293,7 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
                               className={`w-full py-3 px-5 rounded-xl bg-gradient-to-r ${selectedMood.gradient} text-white flex items-center justify-center gap-2`}
                               style={{ fontWeight: 600 }}
                             >
-                              Ver piadas para este humor
+                              {t('moods.view_jokes')}
                               <ArrowRight className="w-4 h-4" />
                             </motion.button>
                           )}
@@ -300,14 +303,14 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
                             className="w-full py-3 px-5 rounded-xl border-2 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                             style={{ fontWeight: 500 }}
                           >
-                            Ver todas as piadas
+                            {t('moods.view_all')}
                           </button>
 
                           <button
                             onClick={handleReset}
                             className="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors mt-1"
                           >
-                            ↩ Mudar humor
+                            ↩ {t('moods.change_mood')}
                           </button>
                         </div>
                       </>

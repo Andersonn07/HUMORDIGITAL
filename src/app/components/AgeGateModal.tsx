@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShieldAlert, ShieldCheck, X, AlertTriangle } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 
 interface AgeGateModalProps {
   isOpen: boolean;
@@ -9,7 +10,9 @@ interface AgeGateModalProps {
 }
 
 export function AgeGateModal({ isOpen, onConfirm, onDeny }: AgeGateModalProps) {
+  const { t } = useTranslation();
   const [shaking, setShaking] = useState(false);
+  const tags = t('ageGate.tags', { returnObjects: true }) as string[];
 
   const handleDeny = () => {
     setShaking(true);
@@ -58,13 +61,13 @@ export function AgeGateModal({ isOpen, onConfirm, onDeny }: AgeGateModalProps) {
                 </motion.div>
 
                 <h2 className="text-gray-900 dark:text-gray-50 mb-2" style={{ fontWeight: 700, fontSize: '1.5rem' }}>
-                  Conteúdo para Adultos
+                  {t('ageGate.title')}
                 </h2>
                 <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">
-                  Esta secção contém piadas sobre
+                  {t('ageGate.subtitle')}
                 </p>
                 <div className="flex flex-wrap justify-center gap-2 mb-5 mt-3">
-                  {['Sexualidade', 'Religião', 'Humor Explícito'].map((tag) => (
+                  {tags.map((tag: string) => (
                     <span
                       key={tag}
                       className="px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 text-xs"
@@ -79,12 +82,14 @@ export function AgeGateModal({ isOpen, onConfirm, onDeny }: AgeGateModalProps) {
                 <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl p-4 mb-6 text-left">
                   <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                   <p className="text-amber-700 dark:text-amber-400 text-sm">
-                    Este conteúdo é destinado a maiores de <strong>18 anos</strong>. Ao continuar, confirmas que tens idade suficiente e consentes em visualizar este tipo de humor.
+                    <Trans i18nKey="ageGate.warning">
+                      Este conteúdo é destinado a maiores de <strong>18 anos</strong>. Ao continuar, confirmas que tens idade suficiente e consentes em visualizar este tipo de humor.
+                    </Trans>
                   </p>
                 </div>
 
                 <p className="text-gray-700 dark:text-gray-200 mb-6" style={{ fontWeight: 600, fontSize: '1.05rem' }}>
-                  Tens 18 ou mais anos?
+                  {t('ageGate.question')}
                 </p>
 
                 {/* Buttons */}
@@ -97,7 +102,7 @@ export function AgeGateModal({ isOpen, onConfirm, onDeny }: AgeGateModalProps) {
                     style={{ fontWeight: 700 }}
                   >
                     <ShieldCheck className="w-5 h-5" />
-                    Sim, tenho 18+ anos — Entrar
+                    {t('ageGate.confirm')}
                   </motion.button>
 
                   <motion.button
@@ -107,12 +112,12 @@ export function AgeGateModal({ isOpen, onConfirm, onDeny }: AgeGateModalProps) {
                     style={{ fontWeight: 500 }}
                   >
                     <X className="w-4 h-4" />
-                    Não, sair
+                    {t('ageGate.deny')}
                   </motion.button>
                 </div>
 
                 <p className="text-xs text-gray-400 dark:text-gray-600 mt-4">
-                  A preferência é guardada localmente no teu dispositivo.
+                  {t('ageGate.storageNote')}
                 </p>
               </div>
             </div>

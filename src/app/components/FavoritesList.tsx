@@ -1,6 +1,7 @@
 import { Joke } from '../data/jokes';
 import { Heart, ThumbsUp, Trash2 } from 'lucide-react';
 import { Button } from './ui/button';
+import { useTranslation } from 'react-i18next';
 
 interface FavoritesListProps {
   jokes: Joke[];
@@ -10,13 +11,14 @@ interface FavoritesListProps {
 }
 
 export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: FavoritesListProps) {
+  const { t } = useTranslation();
   if (jokes.length === 0) {
     return (
       <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-16 text-center transition-colors duration-300">
         <Heart className="w-16 h-16 mx-auto text-neutral-300 dark:text-neutral-700 mb-4" />
-        <p className="text-neutral-700 dark:text-neutral-300 text-base font-semibold mb-2">Nenhum favorito ainda</p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-base font-semibold mb-2">{t('favorites.empty.title')}</p>
         <p className="text-neutral-500 dark:text-neutral-500 text-sm">
-          Navegue pelas piadas e adicione suas favoritas aqui!
+          {t('favorites.empty.subtitle')}
         </p>
       </div>
     );
@@ -35,7 +37,7 @@ export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: Favorit
             {/* Categoria */}
             <div className="flex justify-between items-start mb-4">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">
-                {joke.category}
+                {t(`categories.names.${joke.category}`)}
               </span>
             </div>
 
@@ -56,7 +58,7 @@ export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: Favorit
                   <ThumbsUp
                     className={`w-4 h-4 mr-1.5 ${isLiked ? 'fill-current' : ''}`}
                   />
-                  {isLiked ? 'Curtido' : 'Curtir'}
+                  {isLiked ? t('favorites.actions.liked') : t('favorites.actions.like')}
                 </Button>
               </div>
 
@@ -67,7 +69,7 @@ export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: Favorit
                 className="text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg font-medium"
               >
                 <Trash2 className="w-4 h-4 mr-1.5" />
-                Remover
+                {t('favorites.actions.remove')}
               </Button>
             </div>
           </div>
@@ -76,7 +78,7 @@ export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: Favorit
 
       <div className="text-center py-4">
         <p className="text-sm text-neutral-500 dark:text-neutral-500 font-medium">
-          {jokes.length} {jokes.length === 1 ? 'piada favorita' : 'piadas favoritas'}
+          {t('favorites.stats', { count: jokes.length })}
         </p>
       </div>
     </div>

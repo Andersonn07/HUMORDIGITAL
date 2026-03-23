@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Button } from './ui/button';
 import { Upload, X, ImageIcon, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export interface Sticker {
   id: string;
@@ -16,6 +17,7 @@ interface StickerCreatorProps {
 const MAX_DIMENSION = 400;
 
 export function StickerCreator({ onStickerCreated }: StickerCreatorProps) {
+  const { t } = useTranslation();
   const [preview, setPreview] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +29,7 @@ export function StickerCreator({ onStickerCreated }: StickerCreatorProps) {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
-      setError('Por favor, selecione uma imagem válida.');
+      setError(t('stickers.errors.invalid_image'));
       return;
     }
 
@@ -71,7 +73,7 @@ export function StickerCreator({ onStickerCreated }: StickerCreatorProps) {
 
     const newSticker: Sticker = {
       id: crypto.randomUUID(),
-      name: name.trim() || 'Sticker sem nome',
+      name: name.trim() || t('stickers.creator.default_name'),
       image: preview,
       createdAt: Date.now(),
     };
@@ -96,34 +98,34 @@ export function StickerCreator({ onStickerCreated }: StickerCreatorProps) {
     <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl rounded-[2rem] border border-white/60 dark:border-neutral-700/50 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
       <h3 className="text-xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 flex items-center gap-2">
         <ImageIcon className="w-5 h-5 text-orange-500" />
-        Criar Novo Sticker
+        {t('stickers.creator.title')}
       </h3>
 
       {!preview ? (
-        <div 
+        <div
           onClick={() => fileInputRef.current?.click()}
           className="border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-xl p-8 text-center cursor-pointer hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all"
         >
           <Upload className="w-10 h-10 text-neutral-400 dark:text-neutral-500 mx-auto mb-3" />
           <p className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
-            Toque aqui para escolher uma imagem
+            {t('stickers.creator.upload_prompt')}
           </p>
           <p className="text-xs text-neutral-500 dark:text-neutral-500 mt-1">
-            Galeria ou Máquina Fotográfica
+            {t('stickers.creator.upload_sub')}
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="relative inline-block mx-auto w-full text-center">
-            <img 
-              src={preview} 
-              alt="Preview" 
-              className="max-h-48 rounded-lg mx-auto shadow-md border border-neutral-200 dark:border-neutral-800" 
+            <img
+              src={preview}
+              alt="Preview"
+              className="max-h-48 rounded-lg mx-auto shadow-md border border-neutral-200 dark:border-neutral-800"
             />
             <button
               onClick={clearSelection}
               className="absolute -top-3 -right-3 bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300 p-1.5 rounded-full hover:bg-red-200 dark:hover:bg-red-800 transition-colors shadow-sm"
-              title="Remover imagem"
+              title={t('stickers.creator.remove_title')}
             >
               <X className="w-4 h-4" />
             </button>
@@ -131,20 +133,20 @@ export function StickerCreator({ onStickerCreated }: StickerCreatorProps) {
 
           <div>
             <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">
-              Nome (Opcional)
+              {t('stickers.creator.name_label')}
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Ex: Reação engraçada"
+              placeholder={t('stickers.creator.name_placeholder')}
               className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
             />
           </div>
 
           <Button onClick={handleCreate} className="w-full bg-orange-600 hover:bg-orange-700 text-white rounded-xl py-6 font-semibold flex items-center justify-center gap-2">
             <Check className="w-5 h-5" />
-            Guardar Sticker
+            {t('stickers.creator.submit')}
           </Button>
         </div>
       )}

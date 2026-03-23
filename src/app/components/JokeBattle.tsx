@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { UserJoke } from './JokeCreator';
 import { Flame, Trash2, TrendingUp, Clock, Trophy, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface JokeBattleProps {
   jokes: UserJoke[];
@@ -12,6 +13,7 @@ interface JokeBattleProps {
 type SortOption = 'recent' | 'hot' | 'controversial';
 
 export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattleProps) {
+  const { t } = useTranslation();
   const [sortBy, setSortBy] = useState<SortOption>('hot');
 
   const sortedJokes = useMemo(() => {
@@ -20,7 +22,7 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
     switch (sortBy) {
       case 'recent':
         return jokesCopy.sort((a, b) => b.createdAt - a.createdAt);
-      
+
       case 'hot':
         return jokesCopy.sort((a, b) => {
           const scoreA = a.votes.fire - a.votes.trash;
@@ -28,7 +30,7 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
           if (scoreB !== scoreA) return scoreB - scoreA;
           return b.createdAt - a.createdAt;
         });
-      
+
       case 'controversial':
         return jokesCopy.sort((a, b) => {
           const totalA = a.votes.fire + a.votes.trash;
@@ -38,22 +40,14 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
           if (ratioB !== ratioA) return ratioB - ratioA;
           return totalB - totalA;
         });
-      
+
       default:
         return jokesCopy;
     }
   }, [jokes, sortBy]);
 
   const getCategoryLabel = (category: string) => {
-    const labels: Record<string, string> = {
-      anedotas: 'Anedota',
-      secas: 'Seca',
-      negro: 'Humor Negro',
-      trocadilhos: 'Trocadilho',
-      inteligentes: 'Inteligente',
-      observacional: 'Observacional',
-    };
-    return labels[category] || category;
+    return t(`categories.names.${category}`);
   };
 
   const getCategoryColor = (category: string) => {
@@ -70,11 +64,11 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
 
   const formatTimeAgo = (timestamp: number) => {
     const seconds = Math.floor((Date.now() - timestamp) / 1000);
-    
-    if (seconds < 60) return 'agora mesmo';
-    if (seconds < 3600) return `há ${Math.floor(seconds / 60)}min`;
-    if (seconds < 86400) return `há ${Math.floor(seconds / 3600)}h`;
-    return `há ${Math.floor(seconds / 86400)}d`;
+
+    if (seconds < 60) return t('jokeBattle.timeAgo.now');
+    if (seconds < 3600) return t('jokeBattle.timeAgo.min', { count: Math.floor(seconds / 60) });
+    if (seconds < 86400) return t('jokeBattle.timeAgo.hour', { count: Math.floor(seconds / 3600) });
+    return t('jokeBattle.timeAgo.day', { count: Math.floor(seconds / 86400) });
   };
 
   const getRank = (index: number) => {
@@ -89,10 +83,10 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
       <div className="text-center py-16 bg-white dark:bg-neutral-900 rounded-2xl border border-orange-300 dark:border-orange-800 transition-colors duration-300">
         <div className="text-6xl mb-4">🎭</div>
         <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-2">
-          Nenhuma Piada Criada Ainda
+          {t('jokeBattle.empty.title')}
         </h3>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-          Sê o primeiro a criar uma piada e começar a batalha!
+          {t('jokeBattle.empty.subtitle')}
         </p>
       </div>
     );
@@ -104,36 +98,33 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
       <div className="flex gap-2 overflow-x-auto pb-2">
         <button
           onClick={() => setSortBy('hot')}
-          className={`px-4 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${
-            sortBy === 'hot'
+          className={`px-4 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${sortBy === 'hot'
               ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-sm'
               : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 hover:border-orange-400 dark:hover:border-orange-600'
-          }`}
+            }`}
         >
           <Flame className="w-4 h-4" />
-          Top
+          {t('jokeBattle.sort.hot')}
         </button>
         <button
           onClick={() => setSortBy('recent')}
-          className={`px-4 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${
-            sortBy === 'recent'
+          className={`px-4 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${sortBy === 'recent'
               ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-sm'
               : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 hover:border-orange-400 dark:hover:border-orange-600'
-          }`}
+            }`}
         >
           <Clock className="w-4 h-4" />
-          Recentes
+          {t('jokeBattle.sort.recent')}
         </button>
         <button
           onClick={() => setSortBy('controversial')}
-          className={`px-4 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${
-            sortBy === 'controversial'
+          className={`px-4 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${sortBy === 'controversial'
               ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-sm'
               : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 hover:border-orange-400 dark:hover:border-orange-600'
-          }`}
+            }`}
         >
           <Zap className="w-4 h-4" />
-          Polémicas
+          {t('jokeBattle.sort.controversial')}
         </button>
       </div>
 
@@ -143,11 +134,11 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
           <div className="flex items-center gap-2">
             <Trophy className="w-5 h-5 text-orange-600 dark:text-orange-500" />
             <span className="font-semibold text-neutral-900 dark:text-neutral-100">
-              {jokes.length} {jokes.length === 1 ? 'Piada' : 'Piadas'} na Batalha
+              {t('jokeBattle.stats.jokes', { count: jokes.length })}
             </span>
           </div>
           <div className="text-sm text-neutral-600 dark:text-neutral-400 font-medium">
-            {Object.keys(userVotes).length} {Object.keys(userVotes).length === 1 ? 'voto dado' : 'votos dados'}
+            {t('jokeBattle.stats.votes', { count: Object.keys(userVotes).length })}
           </div>
         </div>
       </div>
@@ -192,7 +183,7 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
                 <button
                   onClick={() => onDeleteJoke(joke.id)}
                   className="p-2 text-neutral-400 dark:text-neutral-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition-all"
-                  title="Eliminar piada"
+                  title={t('jokeBattle.deleteTip')}
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
@@ -219,11 +210,10 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
               <div className="px-5 pb-5 flex gap-2">
                 <button
                   onClick={() => onVote(joke.id, 'fire')}
-                  className={`flex-1 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${
-                    userVote === 'fire'
+                  className={`flex-1 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${userVote === 'fire'
                       ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-sm scale-[1.02]'
                       : 'bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-300 dark:border-orange-800 hover:bg-orange-100 dark:hover:bg-orange-950/50'
-                  }`}
+                    }`}
                 >
                   <Flame className="w-5 h-5" />
                   <span className="text-lg">{joke.votes.fire}</span>
@@ -240,11 +230,10 @@ export function JokeBattle({ jokes, userVotes, onVote, onDeleteJoke }: JokeBattl
 
                 <button
                   onClick={() => onVote(joke.id, 'trash')}
-                  className={`flex-1 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${
-                    userVote === 'trash'
+                  className={`flex-1 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${userVote === 'trash'
                       ? 'bg-neutral-700 dark:bg-neutral-600 text-white shadow-sm scale-[1.02]'
                       : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700'
-                  }`}
+                    }`}
                 >
                   <Trash2 className="w-5 h-5" />
                   <span className="text-lg">{joke.votes.trash}</span>

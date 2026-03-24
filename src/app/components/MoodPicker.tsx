@@ -176,9 +176,7 @@ export function MoodPicker({ isOpen, currentMood, onSelectMood, onApplySuggestio
               <div className="flex justify-between items-start mb-5">
                 <div>
                   <h2 className="text-2xl text-gray-800 dark:text-gray-100" style={{ fontWeight: 700 }}>
-                    <Trans i18nKey="moods.title">
-                      Como te sentes <span className="text-orange-500">hoje</span>?
-                    </Trans>
+                    {t('moods.title')}
                   </h2>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
                     {step === 'pick'

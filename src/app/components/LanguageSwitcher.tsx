@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Globe } from 'lucide-react';
+import { motion } from 'motion/react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +15,7 @@ const languages = [
 ];
 
 export function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -27,7 +28,7 @@ export function LanguageSwitcher() {
       <DropdownMenuTrigger asChild>
         <button
           className="flex items-center gap-2 px-3 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
-          title="Mudar idioma"
+          title={t('app.changeLanguage')}
         >
           <Globe className="w-4 h-4" />
           <span className="text-sm font-medium hidden sm:inline">{currentLang.flag} {currentLang.code.toUpperCase()}</span>

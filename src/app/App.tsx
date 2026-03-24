@@ -348,7 +348,7 @@ export default function App() {
             <button
                onClick={() => user ? auth.signOut() : setIsAuthModalOpen(true)}
                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
-               title={user ? 'Sair' : 'Entrar'}
+               title={user ? t('app.logout') : t('app.login')}
             >
                {user && user.photoURL ? (
                  <img src={user.photoURL} alt="User" className="w-5 h-5 rounded-full" />
@@ -363,7 +363,7 @@ export default function App() {
             <button
               onClick={handleToggleDarkMode}
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
-              title={darkMode ? 'Modo Claro' : 'Modo Noturno'}
+              title={darkMode ? t('app.themeLight') : t('app.themeDark')}
             >
               {darkMode ? (
                 <Sun className="w-4 h-4" />

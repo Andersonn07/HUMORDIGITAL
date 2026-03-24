@@ -16,7 +16,7 @@ interface CringeRankingProps {
 type RankMode = 'funny' | 'cringe' | 'contested';
 
 export function CringeRanking({ votes }: CringeRankingProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [mode, setMode] = useState<RankMode>('funny');
 
   const jokesWithVotes = jokes
@@ -155,7 +155,7 @@ export function CringeRanking({ votes }: CringeRankingProps) {
                       </div>
 
                       <p className="text-neutral-800 dark:text-neutral-100 text-sm leading-relaxed mb-3 line-clamp-3">
-                        {joke.content}
+                        {joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt}
                       </p>
 
                       {/* Mini barra */}

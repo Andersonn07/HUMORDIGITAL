@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 interface CringeVoteProps {
   jokeId: string;
@@ -9,17 +10,18 @@ interface CringeVoteProps {
 }
 
 export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }: CringeVoteProps) {
+  const { t } = useTranslation();
   const total = funnyVotes + cringeVotes;
   const funnyPct = total > 0 ? Math.round((funnyVotes / total) * 100) : 50;
   const cringePct = total > 0 ? Math.round((cringeVotes / total) * 100) : 50;
 
   const getCringeLabel = () => {
-    if (total === 0) return { text: 'Sem votos ainda', color: 'text-gray-400' };
-    if (cringePct >= 80) return { text: '💀 Dolorosamente cringe!', color: 'text-red-500' };
-    if (cringePct >= 60) return { text: '😬 Bastante cringe...', color: 'text-orange-500' };
-    if (funnyPct >= 80) return { text: '🔥 Genuinamente engraçado!', color: 'text-green-600' };
-    if (funnyPct >= 60) return { text: '😄 Mais engraçado que cringe', color: 'text-emerald-500' };
-    return { text: '🤷 Os votos estão divididos', color: 'text-yellow-500' };
+    if (total === 0) return { text: t('cringeVote.noVotes'), color: 'text-gray-400' };
+    if (cringePct >= 80) return { text: t('cringeVote.verdicts.veryCringe'), color: 'text-red-500' };
+    if (cringePct >= 60) return { text: t('cringeVote.verdicts.mostlyCringe'), color: 'text-orange-500' };
+    if (funnyPct >= 80) return { text: t('cringeVote.verdicts.veryFunny'), color: 'text-green-600' };
+    if (funnyPct >= 60) return { text: t('cringeVote.verdicts.mostlyFunny'), color: 'text-emerald-500' };
+    return { text: t('cringeVote.verdicts.divided'), color: 'text-yellow-500' };
   };
 
   const verdict = getCringeLabel();
@@ -28,7 +30,7 @@ export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }
     <div className="mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-800">
       {/* Título */}
       <p className="text-center text-xs font-semibold text-neutral-600 dark:text-neutral-400 mb-4 tracking-wider uppercase">
-        Júri Popular — É engraçado ou é cringe?
+        {t('cringeVote.title')}
       </p>
 
       {/* Botões de voto */}
@@ -43,9 +45,9 @@ export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }
             }`}
         >
           <span className="text-2xl">😂</span>
-          <span className="text-sm font-bold">Engraçado!</span>
+          <span className="text-sm font-bold">{t('cringeVote.funnyLabel')}</span>
           {total > 0 && (
-            <span className="text-xs opacity-90 font-medium">{funnyVotes} voto{funnyVotes !== 1 ? 's' : ''}</span>
+            <span className="text-xs opacity-90 font-medium">{t('cringeVote.stats.other', { count: funnyVotes })}</span>
           )}
         </motion.button>
 
@@ -59,9 +61,9 @@ export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }
             }`}
         >
           <span className="text-2xl">😬</span>
-          <span className="text-sm font-bold">Cringe!</span>
+          <span className="text-sm font-bold">{t('cringeVote.cringeLabel')}</span>
           {total > 0 && (
-            <span className="text-xs opacity-90 font-medium">{cringeVotes} voto{cringeVotes !== 1 ? 's' : ''}</span>
+            <span className="text-xs opacity-90 font-medium">{t('cringeVote.stats.other', { count: cringeVotes })}</span>
           )}
         </motion.button>
       </div>
@@ -88,7 +90,7 @@ export function CringeVote({ jokeId, funnyVotes, cringeVotes, userVote, onVote }
               transition={{ duration: 0.6, ease: 'easeOut' }}
             />
           </div>
-          <p className="text-center text-xs text-neutral-500 dark:text-neutral-500 font-medium">{total} voto{total !== 1 ? 's' : ''} no total</p>
+          <p className="text-center text-xs text-neutral-500 dark:text-neutral-500 font-medium">{t('cringeVote.total', { count: total })}</p>
         </div>
       )}
     </div>

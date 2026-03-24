@@ -43,7 +43,7 @@ export function JokeCard({
   onCringeVote,
   censorMode = true,
 }: JokeCardProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const jokeVotes = votes[joke.id] || { funny: 0, cringe: 0 };
   const userVote = userVotes[joke.id] || null;
   const isCensored = censorMode && joke.mature;
@@ -76,7 +76,7 @@ export function JokeCard({
             {/* Blurred text behind */}
             <div className="relative w-full flex items-center justify-center">
               <p className="text-lg md:text-xl text-neutral-800 dark:text-neutral-200 text-center leading-relaxed select-none blur-lg pointer-events-none px-4">
-                {joke.content}
+                {joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt}
               </p>
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                 <div className="w-16 h-16 rounded-2xl bg-red-100 dark:bg-red-950/40 border border-red-300 dark:border-red-800 flex items-center justify-center">
@@ -93,7 +93,7 @@ export function JokeCard({
           </div>
         ) : (
           <p className="text-lg md:text-xl text-neutral-900 dark:text-neutral-100 text-center leading-relaxed px-4 font-normal">
-            {joke.content}
+            {joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt}
           </p>
         )}
       </div>

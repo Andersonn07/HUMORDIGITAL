@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "RIBO — Digital Humor",
+    "title": "RIBO",
     "subtitle": "Your daily dose of laughter, puns and dry jokes to brighten your day!",
     "themeLight": "Light Mode",
     "themeDark": "Dark Mode",
@@ -12,7 +12,8 @@
       "mode": "{{mood}} Mode",
       "subtitle": "Jokes selected for your mood today",
       "viewAll": "See all"
-    }
+    },
+    "changeLanguage": "Change language"
   },
   "dashboard": {
     "title": "Your Mood Calendar",
@@ -40,7 +41,11 @@
   "ageGate": {
     "title": "Adult Content",
     "subtitle": "This section contains jokes about",
-    "tags": ["Sexuality", "Religion", "Explicit Humor"],
+    "tags": [
+      "Sexuality",
+      "Religion",
+      "Explicit Humor"
+    ],
     "warning": "This content is intended for those <0>18 years or older</0>. By continuing, you confirm that you are of legal age and consent to view this type of humor.",
     "question": "Are you 18 or older?",
     "confirm": "Yes, I am 18+ — Enter",
@@ -52,6 +57,24 @@
     "favorite": "Favorite",
     "random": "Random",
     "keyboardHint": "Use ← → to navigate or click \"Random\""
+  },
+  "cringeVote": {
+    "title": "Public Jury — Is it funny or is it cringe?",
+    "funnyLabel": "Funny!",
+    "cringeLabel": "Cringe!",
+    "noVotes": "No votes yet",
+    "stats": {
+      "one": "1 vote",
+      "other": "{{count}} votes"
+    },
+    "total": "{{count}} total votes",
+    "verdicts": {
+      "veryCringe": "💀 Painfully cringe!",
+      "mostlyCringe": "😬 Quite cringe...",
+      "veryFunny": "🔥 Genuinely funny!",
+      "mostlyFunny": "😄 Funnier than cringe",
+      "divided": "🤷 Votes are divided"
+    }
   },
   "tabs": {
     "jokes": "Jokes",
@@ -178,7 +201,8 @@
     }
   },
   "moods": {
-    "title": "How do you feel <0>today</0>?",
+    "title": "How do you feel ?",
+    "badge_prompt": "Today's Mood",
     "subtitle_pick": "Choose your state of mind and get tailored jokes",
     "subtitle_result": "Perfect! We have the right joke for you",
     "view_jokes": "See jokes for this mood",

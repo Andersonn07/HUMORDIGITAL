@@ -5,7 +5,13 @@
     "themeLight": "Claro",
     "themeDark": "Noturno",
     "login": "Entrar",
-    "logout": "Sair"
+    "logout": "Sair",
+    "moodBanner": {
+      "mode": "Modo {{mood}}",
+      "subtitle": "Piadas selecionadas para o teu humor de hoje",
+      "viewAll": "Ver todas"
+    },
+    "changeLanguage": "Mudar idioma"
   },
   "censor": {
     "active": "Modo Adulto ativo",
@@ -34,7 +40,25 @@
     "like": "Curtir",
     "favorite": "Favoritar",
     "random": "Aleatória",
-    "keyboardHint": "Use ← → para navegar ou clique em \"Aleatória\""
+    "keyboardHint": "Usa ← → para navegar ou clica em \"Aleatória\""
+  },
+  "cringeVote": {
+    "title": "Júri Popular — É engraçado ou é cringe?",
+    "funnyLabel": "Engraçado!",
+    "cringeLabel": "Cringe!",
+    "noVotes": "Sem votos ainda",
+    "stats": {
+      "one": "1 voto",
+      "other": "{{count}} votos"
+    },
+    "total": "{{count}} votos no total",
+    "verdicts": {
+      "veryCringe": "💀 Dolorosamente cringe!",
+      "mostlyCringe": "😬 Bastante cringe...",
+      "veryFunny": "🔥 Genuinamente engraçado!",
+      "mostlyFunny": "😄 Mais engraçado que cringe",
+      "divided": "🤷 Os votos estão divididos"
+    }
   },
   "tabs": {
     "jokes": "Piadas",
@@ -170,8 +194,13 @@
       "censurado": "Zona +18"
     }
   },
+  "moodBanner": {
+    "title": "Humor do Dia",
+    "description": "Escolha seu humor para hoje."
+  },
   "moods": {
-    "title": "Como te sentes <0>hoje</0>?",
+    "title": "Como te sentes ?",
+    "badge_prompt": "Humor de Hoje",
     "subtitle_pick": "Escolhe o teu estado de espírito e recebe piadas à medida",
     "subtitle_result": "Perfeito! Temos a piada certa para ti",
     "view_jokes": "Ver piadas para este humor",

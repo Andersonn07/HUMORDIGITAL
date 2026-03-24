@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { MoodOption } from './MoodPicker';
 import { Smile } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface MoodBadgeProps {
   mood: MoodOption | null;
@@ -8,6 +9,7 @@ interface MoodBadgeProps {
 }
 
 export function MoodBadge({ mood, onClick }: MoodBadgeProps) {
+  const { t } = useTranslation();
   return (
     <motion.button
       whileTap={{ scale: 0.96 }}
@@ -38,7 +40,7 @@ export function MoodBadge({ mood, onClick }: MoodBadgeProps) {
         <>
           <Smile className="w-4 h-4" />
           <span className="text-sm font-semibold">
-            Como te sentes?
+            {t('moods.badge_prompt')}
           </span>
         </>
       )}

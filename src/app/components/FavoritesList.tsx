@@ -11,7 +11,7 @@ interface FavoritesListProps {
 }
 
 export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: FavoritesListProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   if (jokes.length === 0) {
     return (
       <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-16 text-center transition-colors duration-300">
@@ -43,7 +43,7 @@ export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: Favorit
 
             {/* Conteúdo */}
             <p className="text-neutral-800 dark:text-neutral-100 text-base leading-relaxed mb-5">
-              {joke.content}
+              {typeof joke.content === 'string' ? joke.content : (joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt)}
             </p>
 
             {/* Ações */}

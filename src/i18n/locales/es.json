@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "RIBO — Humor Digital",
+    "title": "RIBO",
     "subtitle": "¡Tu dosis diaria de risas, juegos de palabras y chistes secos para alegrar tu día!",
     "themeLight": "Modo Claro",
     "themeDark": "Modo Noche",
@@ -10,7 +10,8 @@
       "mode": "Modo {{mood}}",
       "subtitle": "Chistes seleccionados para tu humor de hoy",
       "viewAll": "Ver todos"
-    }
+    },
+    "changeLanguage": "Cambiar idioma"
   },
   "censor": {
     "active": "Modo Adulto activo",
@@ -40,6 +41,24 @@
     "favorite": "Favorito",
     "random": "Aleatorio",
     "keyboardHint": "Usa ← → para navegar o haz clic en \"Aleatorio\""
+  },
+  "cringeVote": {
+    "title": "Jurado Popular — ¿Es gracioso o es cringe?",
+    "funnyLabel": "¡Gracioso!",
+    "cringeLabel": "¡Cringe!",
+    "noVotes": "Sin votos aún",
+    "stats": {
+      "one": "1 voto",
+      "other": "{{count}} votos"
+    },
+    "total": "{{count}} votos en total",
+    "verdicts": {
+      "veryCringe": "💀 ¡Dolorosamente cringe!",
+      "mostlyCringe": "😬 Bastante cringe...",
+      "veryFunny": "🔥 ¡Genuinamente gracioso!",
+      "mostlyFunny": "😄 Más gracioso que cringe",
+      "divided": "🤷 Los votos están divididos"
+    }
   },
   "tabs": {
     "jokes": "Bromas",
@@ -176,7 +195,8 @@
     }
   },
   "moods": {
-    "title": "¿Cómo te sientes <0>hoy</0>?",
+    "title": "¿Cómo te sientes ?",
+    "badge_prompt": "Humor de Hoy",
     "subtitle_pick": "Elige tu estado de ánimo y recibe chistes a medida",
     "subtitle_result": "¡Perfecto! Tenemos el chiste adecuado para ti",
     "view_jokes": "Ver chistes para este humor",

@@ -12,7 +12,8 @@ import { CensorToggle } from './components/CensorToggle';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
 import { Laugh, Heart, Trophy, Swords, Moon, Sun, Image as ImageIcon, User, BarChart2 } from 'lucide-react';
 import { jokes } from './data/jokes';
-import riboLogo from '../assets/4f55b7e853d8fc4351fdb96487e91bfce54b09b5.png';
+import riboLogoLight from '../assets/ribo-logo-light.png';
+import riboLogoDark from '../assets/ribo-logo-dark.png';
 import { StickerCreator, Sticker } from './components/StickerCreator';
 import { StickersTab } from './components/StickersTab';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
@@ -377,9 +378,9 @@ export default function App() {
           </div>
 
           <img
-            src={riboLogo}
+            src={darkMode ? riboLogoDark : riboLogoLight}
             alt="RIBO Logo"
-            className="h-48 md:h-56 w-auto mb-6 drop-shadow-lg hover:scale-105 transition-transform duration-300 mx-auto"
+            className="h-64 md:h-72 w-auto mb-6 drop-shadow-lg hover:scale-105 transition-transform duration-300 mx-auto"
           />
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 mb-3">
             {t('app.title')}

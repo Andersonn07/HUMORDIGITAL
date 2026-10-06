@@ -43,9 +43,9 @@ export function AgeGateModal({ isOpen, onConfirm, onDeny }: AgeGateModalProps) {
             }}
             exit={{ opacity: 0, scale: 0.85, y: 40 }}
             transition={{ type: 'spring', damping: 22, stiffness: 280 }}
-            className="fixed inset-x-4 top-1/2 -translate-y-1/2 md:inset-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-md z-50"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4"
           >
-            <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border-2 border-red-200 dark:border-red-900">
+            <div className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border-2 border-red-200 dark:border-red-900">
               {/* Top gradient stripe */}
               <div className="h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-rose-500" />
 

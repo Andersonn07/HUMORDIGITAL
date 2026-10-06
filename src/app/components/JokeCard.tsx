@@ -75,7 +75,7 @@ export function JokeCard({
           <div className="w-full flex flex-col items-center justify-center gap-4 py-8">
             {/* Blurred text behind */}
             <div className="relative w-full flex items-center justify-center">
-              <p className="text-lg md:text-xl text-neutral-800 dark:text-neutral-200 text-center leading-relaxed select-none blur-lg pointer-events-none px-4">
+              <p className="text-lg md:text-xl text-neutral-800 dark:text-neutral-200 text-center leading-relaxed select-none blur-lg pointer-events-none px-4 whitespace-pre-line">
                 {joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt}
               </p>
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
@@ -92,7 +92,7 @@ export function JokeCard({
             </div>
           </div>
         ) : (
-          <p className="text-lg md:text-xl text-neutral-900 dark:text-neutral-100 text-center leading-relaxed px-4 font-normal">
+          <p className="text-lg md:text-xl text-neutral-900 dark:text-neutral-100 text-center leading-relaxed px-4 font-normal whitespace-pre-line">
             {joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt}
           </p>
         )}

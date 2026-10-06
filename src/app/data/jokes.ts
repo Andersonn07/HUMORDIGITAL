@@ -24,9 +24,9 @@ export const jokes: Joke[] = [
   {
     id: '2',
     content: {
-      pt: 'O que o pato disse para a pata? Vem Quá!',
-      en: 'What did the duck say to his wife? "Quack is where it\'s at!"',
-      es: '¿Qué le dijo el pato a la pata? "¡Cuac-quiere cosa!"',
+      pt: 'O que o pato disse para a pata?\nPato: Vem Quá!',
+      en: 'What did the duck say to his wife?\nDuck: "Quack is where it\'s at!"',
+      es: '¿Qué le dijo el pato a la pata?\nPato: "¡Cuac-quiere cosa!"',
     },
     category: 'anedotas',
   },
@@ -55,7 +55,7 @@ export const jokes: Joke[] = [
       en: 'What is a yellow dot on top of a building? A suicidal Cheeto.',
       es: '¿Qué es una manchita amarilla encima de un edificio? ¡Un Dorito suicida!',
     },
-    category: 'anedotas',
+    category: 'negro',
   },
   {
     id: '31',
@@ -82,16 +82,16 @@ export const jokes: Joke[] = [
       en: 'Why did the computer go to the doctor? Because it had a virus!',
       es: '¿Por qué el ordenador fue al médico? ¡Porque tenía un virus!',
     },
-    category: 'anedotas',
+    category: 'trocadilhos',
   },
   {
     id: '34',
     content: {
-      pt: 'O que a impressora disse para a outra? Essa folha é sua ou é impressão minha?',
-      en: 'What did one printer say to the other? "Is that sheet yours or am I just imagining it?"',
-      es: '¿Qué le dijo una impresora a la otra? "¿Esa hoja es tuya o es impresión mía?"',
+      pt: 'Impressora 1: O que a impressora disse para a outra?\nImpressora 2: Essa folha é sua ou é impressão minha?',
+      en: 'Printer 1: What did one printer say to the other?\nPrinter 2: "Is that sheet yours or am I just imagining it?"',
+      es: 'Impresora 1: ¿Qué le dijo una impresora a la otra?\nImpresora 2: "¿Esa hoja es tuya o es impresión mía?"',
     },
-    category: 'anedotas',
+    category: 'trocadilhos',
   },
   {
     id: '35',
@@ -105,11 +105,11 @@ export const jokes: Joke[] = [
   {
     id: '36',
     content: {
-      pt: 'O que o zero disse para o oito? Que cinto maneiro!',
-      en: 'What did the zero say to the eight? "Nice belt!"',
-      es: '¿Qué le dijo el cero al ocho? "¡Qué cinturón tan chulo!"',
+      pt: 'O que o zero disse para o oito?\nZero: Que cinto maneiro!',
+      en: 'What did the zero say to the eight?\nZero: "Nice belt!"',
+      es: '¿Qué le dijo el cero al ocho?\nCero: "¡Qué cinturón tan chulo!"',
     },
-    category: 'anedotas',
+    category: 'trocadilhos',
   },
   {
     id: '37',
@@ -143,9 +143,9 @@ export const jokes: Joke[] = [
   {
     id: '7',
     content: {
-      pt: 'Dois peixes num tanque. Um diz para o outro: "Sabes conduzir isto?"',
-      en: 'Two fish in a tank. One says to the other: "Do you know how to drive this thing?"',
-      es: 'Dos peces en un tanque. Uno le dice al otro: "¿Sabes conducir esto?"',
+      pt: 'Dois peixes num tanque.\nPeixe 1: Sabes conduzir isto?',
+      en: 'Two fish in a tank.\nFish 1: Do you know how to drive this thing?',
+      es: 'Dos peces en un tanque.\nPez 1: ¿Sabes conducir esto?',
     },
     category: 'secas',
   },
@@ -242,9 +242,9 @@ export const jokes: Joke[] = [
   {
     id: '46',
     content: {
-      pt: 'Disse ao médico que parti a perna em dois sítios. Ele disse-me para parar de ir a esses sítios.',
-      en: 'I told the doctor I broke my leg in two places. He told me to stop going to those places.',
-      es: 'Le dije al médico que me rompí la pierna en dos sitios. Me dijo que dejara de ir a esos sitios.',
+      pt: 'Eu: Parti a perna em dois sítios.\nMédico: Então pare de ir a esses sítios.',
+      en: 'Me: I broke my leg in two places.\nDoctor: Then stop going to those places.',
+      es: 'Yo: Me rompí la pierna en dos sitios.\nMédico: Entonces deja de ir a esos sitios.',
     },
     category: 'secas',
   },
@@ -262,9 +262,9 @@ export const jokes: Joke[] = [
   {
     id: '13',
     content: {
-      pt: 'Médico: "Tenho boas e más notícias." Paciente: "Diga as más primeiro." Médico: "Você tem 24 horas de vida." Paciente: "E as boas?" Médico: "Devia ter-lhe dito isso ontem."',
-      en: 'Doctor: "I have good and bad news." Patient: "Give me the bad news first." Doctor: "You have 24 hours to live." Patient: "And the good news?" Doctor: "I should have told you yesterday."',
-      es: 'Médico: "Tengo buenas y malas noticias." Paciente: "Dígame las malas primero." Médico: "Le quedan 24 horas de vida." Paciente: "¿Y las buenas?" Médico: "Debería haberlo dicho ayer."',
+      pt: 'Médico: Tenho boas e más notícias.\nPaciente: Diga as más primeiro.\nMédico: Você tem 24 horas de vida.\nPaciente: E as boas?\nMédico: Devia ter-lhe dito isso ontem.',
+      en: 'Doctor: I have good and bad news.\nPatient: Give me the bad news first.\nDoctor: You have 24 hours to live.\nPatient: And the good news?\nDoctor: I should have told you yesterday.',
+      es: 'Médico: Tengo buenas y malas noticias.\nPaciente: Dígame las malas primero.\nMédico: Le quedan 24 horas de vida.\nPaciente: ¿Y las buenas?\nMédico: Debería haberlo dicho ayer.',
     },
     category: 'negro',
   },
@@ -275,7 +275,7 @@ export const jokes: Joke[] = [
       en: 'What do you get when you cross a joke with a rhetorical question?',
       es: '¿Qué obtienes cuando cruzas un chiste con una pregunta retórica?',
     },
-    category: 'negro',
+    category: 'secas',
   },
   {
     id: '49',
@@ -284,7 +284,7 @@ export const jokes: Joke[] = [
       en: 'What’s the best thing about Switzerland? I don\'t know, but the flag is a big plus.',
       es: '¿Qué es lo mejor de Suiza? No lo sé, pero su bandera es un gran punto a favor.',
     },
-    category: 'negro',
+    category: 'trocadilhos',
   },
   {
     id: '50',
@@ -307,9 +307,9 @@ export const jokes: Joke[] = [
   {
     id: '52',
     content: {
-      pt: 'Médico: "Tem consciência de que está a sofrer de paranoia?" Paciente: "Eu sabia que toda a gente estava a dizer isso!"',
-      en: 'Doctor: "Are you aware that you are suffering from paranoia?" Patient: "I knew everyone was saying that!"',
-      es: 'Médico: "¿Es consciente de que sufre de paranoia?" Paciente: "¡Sabía que todo el mundo decía eso!"',
+      pt: 'Médico: Tem consciência de que está a sofrer de paranoia?\nPaciente: Eu sabia que toda a gente estava a dizer isso!',
+      en: 'Doctor: Are you aware that you are suffering from paranoia?\nPatient: I knew everyone was saying that!',
+      es: 'Médico: ¿Es consciente de que sufre de paranoia?\nPaciente: ¡Sabía que todo el mundo decía eso!',
     },
     category: 'negro',
   },
@@ -399,9 +399,9 @@ export const jokes: Joke[] = [
   {
     id: '20',
     content: {
-      pt: 'O que a esfera disse para o cubo? Deixa de ser quadrado!',
-      en: 'What did the sphere say to the cube? Stop being so square!',
-      es: '¿Qué le dijo la esfera al cubo? ¡Deja de ser tan cuadrado!',
+      pt: 'A esfera diz ao cubo:\nEsfera: Deixa de ser quadrado!',
+      en: 'The sphere says to the cube:\nSphere: Stop being so square!',
+      es: 'La esfera le dice al cubo:\nEsfera: ¡Deja de ser tan cuadrado!',
     },
     category: 'trocadilhos',
   },
@@ -466,7 +466,7 @@ export const jokes: Joke[] = [
       en: 'What is the height of optimism? An ant carrying a piece of gum home.',
       es: '¿Qué es el colmo del optimismo? ¡Una hormiga llevando un chicle a casa!',
     },
-    category: 'trocadilhos',
+    category: 'anedotas',
   },
   {
     id: '61',
@@ -500,36 +500,36 @@ export const jokes: Joke[] = [
   {
     id: '23',
     content: {
-      pt: 'Heisenberg está a conduzir na autoestrada e é parado pela polícia. O polícia pergunta: "Sabe a que velocidade ia?" Heisenberg responde: "Não, mas sei exatamente onde estou!"',
-      en: 'Heisenberg is driving down the highway and gets pulled over. The cop asks, "Do you know how fast you were going?" Heisenberg replies, "No, but I know exactly where I am!"',
-      es: 'Heisenberg va conduciendo por la autopista y la policía lo detiene. El agente le pregunta: "¿Sabe a qué velocidad iba?". Heisenberg responde: "No, ¡pero sé exactamente dónde estoy!"',
+      pt: 'Polícia: Sabe a que velocidade ia?\nHeisenberg: Não, mas sei exatamente onde estou!',
+      en: 'Police officer: Do you know how fast you were going?\nHeisenberg: No, but I know exactly where I am!',
+      es: 'Policía: ¿Sabe a qué velocidad iba?\nHeisenberg: No, ¡pero sé exactamente dónde estoy!',
     },
     category: 'inteligentes',
   },
   {
     id: '24',
     content: {
-      pt: 'Perguntaram a um programador: "Queres café ou chá?" Ele respondeu: "Sim."',
-      en: 'A programmer was asked: "Do you want coffee or tea?" He answered: "Yes."',
-      es: 'Le preguntaron a un programador: "¿Quieres café o té?". Él respondió: "Sí".',
+      pt: 'Entrevistador: Queres café ou chá?\nProgramador: Sim.',
+      en: 'Interviewer: Do you want coffee or tea?\nProgrammer: Yes.',
+      es: 'Entrevistador: ¿Quieres café o té?\nProgramador: Sí.',
     },
     category: 'inteligentes',
   },
   {
     id: '25',
     content: {
-      pt: 'Dois átomos estão a caminhar. Um diz: "Acho que perdi um eletrão." O outro pergunta: "Tens a certeza?" O primeiro responde: "Sim, estou positivo!"',
-      en: 'Two atoms are walking. One says, "I think I lost an electron." The other asks, "Are you sure?" The first replies, "Yes, I\'m positive!"',
-      es: 'Dos átomos van caminando. Uno dice: "Creo que he perdido un electrón". El otro pregunta: "¿Estás seguro?". El primero responde: "¡Sí, estoy positivo!"',
+      pt: 'Átomo 1: Acho que perdi um eletrão.\nÁtomo 2: Tens a certeza?\nÁtomo 1: Sim, estou positivo!',
+      en: 'Atom 1: I think I lost an electron.\nAtom 2: Are you sure?\nAtom 1: Yes, I\'m positive!',
+      es: 'Átomo 1: Creo que he perdido un electrón.\nÁtomo 2: ¿Estás seguro?\nÁtomo 1: ¡Sí, estoy positivo!',
     },
     category: 'inteligentes',
   },
   {
     id: '62',
     content: {
-      pt: 'Um SQL query entra num bar, aproxima-se de duas tabelas e pergunta: "Posso juntar-me a vocês?"',
-      en: 'An SQL query walks into a bar, walks up to two tables, and asks, "Can I join you?"',
-      es: 'Una consulta SQL entra en un bar, se acerca a dos tablas y pregunta: "¿Puedo unirme a vosotras?"',
+      pt: 'Uma consulta SQL entra num bar e aproxima-se de duas tabelas.\nConsulta SQL: Posso juntar-me a vocês?',
+      en: 'An SQL query walks into a bar and approaches two tables.\nSQL query: Can I join you?',
+      es: 'Una consulta SQL entra en un bar y se acerca a dos tablas.\nConsulta SQL: ¿Puedo unirme a vosotras?',
     },
     category: 'inteligentes',
   },
@@ -545,9 +545,9 @@ export const jokes: Joke[] = [
   {
     id: '64',
     content: {
-      pt: 'Um fotão entra num hotel. O rececionista pergunta: "Precisa de ajuda com a bagagem?" O fotão responde: "Não, estou a viajar leve."',
-      en: 'A photon checks into a hotel. The bellhop asks, "Can I help you with your luggage?" The photon replies, "No, I\'m traveling light."',
-      es: 'Un fotón entra en un hotel. El recepcionista le pregunta: "¿Necesita ayuda con el equipaje?". El fotón responde: "No, viajo ligero".',
+      pt: 'Rececionista: Precisa de ajuda com a bagagem?\nFotão: Não, estou a viajar leve.',
+      en: 'Bellhop: Can I help you with your luggage?\nPhoton: No, I\'m traveling light.',
+      es: 'Recepcionista: ¿Necesita ayuda con el equipaje?\nFotón: No, viajo ligero.',
     },
     category: 'inteligentes',
   },
@@ -563,9 +563,9 @@ export const jokes: Joke[] = [
   {
     id: '66',
     content: {
-      pt: 'Pessimista: "O copo está meio vazio." Otimista: "O copo está meio cheio." Engenheiro: "O copo é o dobro do tamanho necessário."',
-      en: 'Pessimist: "The glass is half empty." Optimist: "The glass is half full." Engineer: "The glass is twice as large as it needs to be."',
-      es: 'Pesimista: "El vaso está medio vacío". Optimista: "El vaso está medio lleno". Ingeniero: "El vaso es el doble de grande de lo necesario".',
+      pt: 'Pessimista: O copo está meio vazio.\nOtimista: O copo está meio cheio.\nEngenheiro: O copo é o dobro do tamanho necessário.',
+      en: 'Pessimist: The glass is half empty.\nOptimist: The glass is half full.\nEngineer: The glass is twice as large as it needs to be.',
+      es: 'Pesimista: El vaso está medio vacío.\nOptimista: El vaso está medio lleno.\nIngeniero: El vaso es el doble de grande de lo necesario.',
     },
     category: 'inteligentes',
   },
@@ -695,7 +695,7 @@ export const jokes: Joke[] = [
       en: 'It\'s weird to think that your hands have never actually touched each other; only their atoms are repelling.',
       es: 'Es raro pensar que tus manos nunca se han tocado realmente, solo sus átomos se repelen.',
     },
-    category: 'observacionais',
+    category: 'inteligentes',
   },
   {
     id: '76',
@@ -713,7 +713,7 @@ export const jokes: Joke[] = [
       en: 'They say to live each day as if it were your last. So today I\'m going to spend the day lying down, crying, and calling my friends and family.',
       es: 'Dicen que vivas cada día como si fuera el último. Así que hoy voy a pasar el día tumbado llorando y llamando a mis amigos y familiares.',
     },
-    category: 'observacionais',
+    category: 'negro',
   },
 
   // ============ CONTEÚDO +18 — ZONA CENSURADA (Sexualidade + Religião + Humor Negro Pesado) ============
@@ -751,9 +751,9 @@ export const jokes: Joke[] = [
   {
     id: '47',
     content: {
-      pt: 'A minha avó disse: "A tua geração depende muito da tecnologia." Eu respondi: "Sem problema" e desliguei o ventilador dela.',
-      en: 'My grandma said, "Your generation relies too much on technology." I said, "No problem," and unplugged her life support.',
-      es: 'Mi abuela dijo: "Tu generación depende demasiado de la tecnología". Le dije: "No hay problema", y le desenchufé el respirador.',
+      pt: 'Avó: A tua geração depende muito da tecnologia.\nNeto: Sem problema. (Desliguei o ventilador dela.)',
+      en: 'Grandma: Your generation relies too much on technology.\nGrandchild: No problem. (I unplugged her life support.)',
+      es: 'Abuela: Tu generación depende demasiado de la tecnología.\nNieto: No hay problema. (Le desenchufé el respirador.)',
     },
     category: 'censurado',
     mature: true,
@@ -762,9 +762,9 @@ export const jokes: Joke[] = [
   {
     id: 'a01',
     content: {
-      pt: 'O que é que a cobra disse para o nudista? "Como guardas todas essas coisas sem bolsos?"',
-      en: 'What did the snake say to the nudist? "How do you keep all those things without pockets?"',
-      es: '¿Qué le dijo la serpiente al nudista? "¿Cómo guardas todas estas cosas sin bolsos?"',
+      pt: 'O que é que a cobra disse para o nudista?\nCobra: Como guardas todas essas coisas sem bolsos?',
+      en: 'What did the snake say to the nudist?\nSnake: How do you keep all those things without pockets?',
+      es: '¿Qué le dijo la serpiente al nudista?\nSerpiente: ¿Cómo guardas todas estas cosas sin bolsos?',
     },
     category: 'censurado',
     mature: true,
@@ -782,9 +782,9 @@ export const jokes: Joke[] = [
   {
     id: 'a03',
     content: {
-      pt: 'O que é que um homem diz depois do sexo? "Já posso ir para casa, amor?"',
-      en: 'What does a man say after sex? "Can I go home now, honey?"',
-      es: '¿Qué dice un hombre después del sexo? "¿Ya puedo irme a casa, cariño?"',
+      pt: 'O que é que um homem diz depois do sexo?\nHomem: Já posso ir para casa, amor?',
+      en: 'What does a man say after sex?\nMan: Can I go home now, honey?',
+      es: '¿Qué dice un hombre después del sexo?\nHombre: ¿Ya puedo irme a casa, cariño?',
     },
     category: 'censurado',
     mature: true,
@@ -842,9 +842,9 @@ export const jokes: Joke[] = [
   {
     id: 'a09',
     content: {
-      pt: 'O que é que o vibrador disse para o óculo? "Pelo menos eu sei o que é vibrar!"',
-      en: 'What did the vibrator say to the glasses? "At least I know what it\'s like to vibrate!"',
-      es: '¿Qué le dijo el vibrador a las gafas? "¡Al menos yo sé lo que es vibrar!"',
+      pt: 'O que é que o vibrador disse para o óculo?\nVibrador: Pelo menos eu sei o que é vibrar!',
+      en: 'What did the vibrator say to the glasses?\nVibrator: At least I know what it\'s like to vibrate!',
+      es: '¿Qué le dijo el vibrador a las gafas?\nVibrador: ¡Al menos yo sé lo que es vibrar!',
     },
     category: 'censurado',
     mature: true,
@@ -862,9 +862,9 @@ export const jokes: Joke[] = [
   {
     id: 'a11',
     content: {
-      pt: 'A minha namorada disse que queria sentir-se especial no aniversário. Fiz um jantar à luz de velas. Ela disse: "A corrente foi abaixo, não foi?" Sim, mas o esforço foi genuíno.',
-      en: 'My girlfriend said she wanted to feel special on her birthday. I made a candlelit dinner. She said, "The power went out, didn\'t it?" Yes, but the effort was genuine.',
-      es: 'Mi novia dijo que quería sentirse especial en su cumpleaños. Hice una cena a la luz de las velas. Ella dijo: "¿Se ha ido la luz, verdad?". Sí, pero el esfuerzo fue genuino.',
+      pt: 'Eu: A minha namorada queria sentir-se especial no aniversário, por isso preparei um jantar à luz de velas.\nNamorada: A corrente foi abaixo, não foi?\nEu: Sim, mas o esforço foi genuíno.',
+      en: 'Me: My girlfriend wanted to feel special on her birthday, so I made a candlelit dinner.\nGirlfriend: The power went out, didn\'t it?\nMe: Yes, but the effort was genuine.',
+      es: 'Yo: Mi novia quería sentirse especial en su cumpleaños, así que preparé una cena a la luz de las velas.\nNovia: ¿Se ha ido la luz, verdad?\nYo: Sí, pero el esfuerzo fue genuino.',
     },
     category: 'censurado',
     mature: true,
@@ -872,9 +872,9 @@ export const jokes: Joke[] = [
   {
     id: 'a12',
     content: {
-      pt: 'O que é que um homem diz depois de fazer sexo pela primeira vez? "Portanto é assim que se descodificam as instruções do IKEA."',
-      en: 'What does a man say after having sex for the first time? "So that\'s how you decode IKEA instructions."',
-      es: '¿Qué dice un hombre después de tener sexo por primera vez? "Así que así es como se descifran las instrucciones de IKEA".',
+      pt: 'O que é que um homem diz depois de fazer sexo pela primeira vez?\nHomem: Portanto é assim que se descodificam as instruções do IKEA.',
+      en: 'What does a man say after having sex for the first time?\nMan: So that\'s how you decode IKEA instructions.',
+      es: '¿Qué dice un hombre después de tener sexo por primera vez?\nHombre: Así que así es como se descifran las instrucciones de IKEA.',
     },
     category: 'censurado',
     mature: true,
@@ -882,9 +882,9 @@ export const jokes: Joke[] = [
   {
     id: 'a13',
     content: {
-      pt: 'Fui a uma sex shop pela primeira vez. O empregado perguntou se precisava de ajuda. Disse que sim. Ele respondeu: "Então não era para vir aqui."',
-      en: 'I went to a sex shop for the first time. The employee asked if I needed help. I said yes. He replied, "Then you weren\'t supposed to come here."',
-      es: 'Fui a una sex shop por primera vez. El empleado me preguntó si necesitaba ayuda. Le dije que sí. Él respondió: "Entonces no deberías haber venido aquí".',
+      pt: 'Fui a uma sex shop pela primeira vez.\nEmpregado: Precisa de ajuda?\nCliente: Sim.\nEmpregado: Então não era para vir aqui.',
+      en: 'I went to a sex shop for the first time.\nEmployee: Do you need help?\nCustomer: Yes.\nEmployee: Then you weren\'t supposed to come here.',
+      es: 'Fui a una tienda erótica por primera vez.\nEmpleado: ¿Necesita ayuda?\nCliente: Sí.\nEmpleado: Entonces no deberías haber venido aquí.',
     },
     category: 'censurado',
     mature: true,
@@ -893,9 +893,9 @@ export const jokes: Joke[] = [
   {
     id: 'r01',
     content: {
-      pt: 'Um padre e um coelho entram num bar. O coelho diz: "Acho que sou um typo!"',
-      en: 'A priest and a rabbit walk into a bar. The rabbit says, "I think I\'m a typo!"',
-      es: 'Un cura y un conejo entran en un bar. El conejo dice: "¡Creo que soy un error de imprenta (typo)!"',
+      pt: 'Um padre e um coelho entram num bar.\nCoelho: Acho que sou um typo!',
+      en: 'A priest and a rabbit walk into a bar.\nRabbit: I think I\'m a typo!',
+      es: 'Un cura y un conejo entran en un bar.\nConejo: ¡Creo que soy un error de imprenta (typo)!',
     },
     category: 'censurado',
     mature: true,
@@ -903,9 +903,9 @@ export const jokes: Joke[] = [
   {
     id: 'r02',
     content: {
-      pt: 'Na confissão: "Padre, pequei." "Diz, filho." "Tive pensamentos impuros." "Quantas vezes?" "Não sei, quantas vezes tem o Whatsapp de conversas não lidas?"',
-      en: 'In confession: "Father, I have sinned." "Tell me, son." "I had impure thoughts." "How many times?" "I don\'t know, how many unread WhatsApp messages do you have?"',
-      es: 'En la confesión: "Padre, he pecado". "Dime, hijo". "He tenido pensamientos impuros". "¿Cuántas veces?". "No lo sé, ¿cuántos mensajes de WhatsApp sin leer tiene usted?".',
+      pt: 'Penitente: Padre, pequei.\nPadre: Diz, filho.\nPenitente: Tive pensamentos impuros.\nPadre: Quantas vezes?\nPenitente: Não sei, quantas vezes tem o Whatsapp de conversas não lidas?',
+      en: 'Penitent: Father, I have sinned.\nPriest: Tell me, son.\nPenitent: I had impure thoughts.\nPriest: How many times?\nPenitent: I don\'t know, how many unread WhatsApp messages do you have?',
+      es: 'Penitente: Padre, he pecado.\nSacerdote: Dime, hijo.\nPenitente: He tenido pensamientos impuros.\nSacerdote: ¿Cuántas veces?\nPenitente: No lo sé, ¿cuántos mensajes de WhatsApp sin leer tiene usted?',
     },
     category: 'censurado',
     mature: true,
@@ -943,9 +943,9 @@ export const jokes: Joke[] = [
   {
     id: 'r06',
     content: {
-      pt: 'Um ateu, um agnóstico e um crente entram num bar. O ateu pede uma cerveja, o agnóstico pede "o que quer que seja", e o crente pede água para ver se acontece alguma coisa.',
-      en: 'An atheist, an agnostic, and a believer walk into a bar. The atheist orders a beer, the agnostic orders "whatever," and the believer orders water to see if anything happens.',
-      es: 'Un ateo, un agnóstico y un creyente entran en un bar. El ateo pide una cerveza, el agnóstico pide "lo que sea" y el creyente pide agua para ver si pasa algo.',
+      pt: 'Um ateu, um agnóstico e um crente entram num bar.\nAteu: Uma cerveja, por favor.\nAgnóstico: O que quer que seja.\nCrente: Água, para ver se acontece alguma coisa.',
+      en: 'An atheist, an agnostic, and a believer walk into a bar.\nAtheist: A beer, please.\nAgnostic: Whatever.\nBeliever: Water, to see if anything happens.',
+      es: 'Un ateo, un agnóstico y un creyente entran en un bar.\nAteo: Una cerveza, por favor.\nAgnóstico: Lo que sea.\nCreyente: Agua, para ver si pasa algo.',
     },
     category: 'censurado',
     mature: true,
@@ -953,9 +953,9 @@ export const jokes: Joke[] = [
   {
     id: 'r07',
     content: {
-      pt: 'Na confissão: "Padre, menti, roubei e traí." "Qualquer coisa mais?" "Não tenho tempo, padre, tenho uma reunião às 3."',
-      en: 'In confession: "Father, I lied, stole, and cheated." "Anything else?" "I don\'t have time, Father, I have a meeting at 3."',
-      es: 'En la confesión: "Padre, he mentido, robado y traicionado". "¿Algo más?". "No tengo tiempo, padre, tengo una reunión a las 3".',
+      pt: 'Penitente: Padre, menti, roubei e traí.\nPadre: Qualquer coisa mais?\nPenitente: Não tenho tempo, padre, tenho uma reunião às 3.',
+      en: 'Penitent: Father, I lied, stole, and cheated.\nPriest: Anything else?\nPenitent: I don\'t have time, Father, I have a meeting at 3.',
+      es: 'Penitente: Padre, he mentido, robado y traicionado.\nSacerdote: ¿Algo más?\nPenitente: No tengo tiempo, padre, tengo una reunión a las 3.',
     },
     category: 'censurado',
     mature: true,
@@ -973,9 +973,9 @@ export const jokes: Joke[] = [
   {
     id: 'r09',
     content: {
-      pt: 'Deus disse "que haja luz" e houve luz. Deus disse "que haja internet" e houve LENTIDÃO e anúncios.',
-      en: 'God said, "Let there be light," and there was light. God said, "Let there be internet," and there was LAG and ads.',
-      es: 'Dios dijo: "Que se haga la luz", y se hizo la luz. Dios dijo: "Que se haga el internet", y se hizo la LENTITUD y los anuncios.',
+      pt: 'Deus: Que haja luz! (E houve luz.)\nDeus: Que haja internet! (E houve LENTIDÃO e anúncios.)',
+      en: 'God: Let there be light! (And there was light.)\nGod: Let there be internet! (And there was LAG and ads.)',
+      es: 'Dios: ¡Que se haga la luz! (Y se hizo la luz.)\nDios: ¡Que se haga el internet! (Y se hizo la LENTITUD y los anuncios.)',
     },
     category: 'censurado',
     mature: true,
@@ -983,9 +983,9 @@ export const jokes: Joke[] = [
   {
     id: 'r10',
     content: {
-      pt: 'Um homem reza todos os dias para ganhar na lotaria. Depois de 40 anos, Deus aparece-lhe e diz: "Ajuda-me um bocado — compra bilhete!"',
-      en: 'A man prays every day to win the lottery. After 40 years, God appears and says, "Help me out here — buy a ticket!"',
-      es: 'Un hombre reza todos los días para ganar la lotería. Después de 40 años, Dios se le aparece y le dice: "¡Ayúdame un poco, compra el billete!".',
+      pt: 'Um homem reza todos os dias para ganhar na lotaria. Após 40 anos, Deus aparece-lhe.\nDeus: Ajuda-me um bocado — compra bilhete!',
+      en: 'A man prays every day to win the lottery. After 40 years, God appears to him.\nGod: Help me out here — buy a ticket!',
+      es: 'Un hombre reza todos los días para ganar la lotería. Después de 40 años, Dios se le aparece.\nDios: ¡Ayúdame un poco, compra el billete!',
     },
     category: 'censurado',
     mature: true,
@@ -1003,9 +1003,9 @@ export const jokes: Joke[] = [
   {
     id: 'r12',
     content: {
-      pt: 'Perguntei ao padre como lidava com tantos pecados. Ele disse: "É como gerir uma lista de espera num hospital — há sempre mais a chegar do que os que saem."',
-      en: 'I asked the priest how he dealt with so many sins. He said, "It\'s like managing a hospital waiting list — there are always more coming in than going out."',
-      es: 'Le pregunté al cura cómo lidiaba con tantos pecados. Me dijo: "Es como gestionar una lista de espera en un hospital: siempre entran más de los que salen".',
+      pt: 'Eu: Como lida com tantos pecados?\nPadre: É como gerir uma lista de espera num hospital — há sempre mais a chegar do que os que saem.',
+      en: 'Me: How do you deal with so many sins?\nPriest: It\'s like managing a hospital waiting list — there are always more coming in than going out.',
+      es: 'Yo: ¿Cómo lidia con tantos pecados?\nSacerdote: Es como gestionar una lista de espera en un hospital: siempre entran más de los que salen.',
     },
     category: 'censurado',
     mature: true,

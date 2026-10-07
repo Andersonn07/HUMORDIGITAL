@@ -85,21 +85,64 @@
     "ranking": "Ranking"
   },
   "stickers": {
-    "title": "Stickers / Memes",
+    "title": "Stickers & Memes",
+    "hub_sub": "Tap any sticker to copy and share wherever you like!",
+    "open_creator": "Create Sticker",
+    "close_creator": "Close Creator",
+    "search_placeholder": "Search by laugh, meme, capybara, flork, reaction...",
+    "empty_search": "No stickers found matching your search.",
+    "empty_favorites": "You don't have favorite stickers yet. Tap the star ⭐ to save!",
+    "empty_custom": "No custom stickers yet. Click 'Create Sticker' above!",
+    "empty_general": "No stickers available.",
+    "tabs": {
+      "all": "All",
+      "favorites": "Favorites",
+      "recent": "Recent",
+      "memes": "Memes",
+      "reactions": "Reactions",
+      "viral": "Viral",
+      "custom": "My Stickers"
+    },
+    "modal": {
+      "subtitle": "Ready to copy and share in any chat",
+      "copied_button": "Copied to Clipboard!",
+      "copy_button": "Copy Sticker (Ctrl+V)",
+      "copied_toast": "Sticker copied! You can now paste in any chat (Ctrl+V)",
+      "copied_sub": "Image ready on your clipboard.",
+      "downloaded_instead": "Sticker downloaded in PNG for you to send!",
+      "download_success": "Sticker downloaded with transparent background!",
+      "share_sticker": "Share Sticker",
+      "download_png": "Download PNG",
+      "favorite": "Favorite",
+      "favorited": "In Favorites ⭐",
+      "react_joke": "React on Joke",
+      "reacted_toast": "Sticker reaction sent to current joke!",
+      "delete": "Delete"
+    },
     "creator": {
-      "title": "Create New Sticker",
+      "title": "Sticker Studio",
+      "subtitle": "Create custom stickers with cutouts, border outline, and meme captions",
       "upload_prompt": "Tap here to choose an image",
-      "upload_sub": "Gallery or Camera",
-      "name_label": "Name (Optional)",
-      "name_placeholder": "e.g., Funny reaction",
+      "upload_sub": "Select a photo from your gallery or files (PNG, JPG, WebP)",
+      "name_label": "Sticker Name",
+      "name_placeholder": "e.g., My Reaction",
+      "shape": "Cutout Shape",
+      "outline": "Sticker Outline",
+      "text_overlay": "Meme Caption / Subtitle",
+      "text_placeholder": "e.g., Chill out / Am I wrong? / Loved it",
+      "accessories": "Accessories & Emojis",
       "submit": "Save Sticker",
-      "remove_title": "Remove image",
-      "default_name": "Unnamed sticker"
+      "remove_title": "Change image",
+      "default_name": "My Sticker",
+      "success_toast": "Sticker created successfully in your pack!"
     },
     "tab": {
       "collection": "Your collection",
+      "custom": "My Stickers",
       "empty_title": "No stickers saved yet. Create your first one above!",
-      "delete_tip": "Delete Sticker"
+      "delete_tip": "Delete Sticker",
+      "added_fav": "Added to favorites ⭐",
+      "removed_fav": "Removed from favorites."
     },
     "errors": {
       "invalid_image": "Please select a valid image."

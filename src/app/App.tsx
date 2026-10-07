@@ -14,8 +14,9 @@ import { Laugh, Heart, Trophy, Swords, Moon, Sun, Image as ImageIcon, User, BarC
 import { jokes } from './data/jokes';
 import riboLogoLight from '../assets/ribo-logo-light.png';
 import riboLogoDark from '../assets/ribo-logo-dark.png';
-import { StickerCreator, Sticker } from './components/StickerCreator';
+import { Sticker } from './data/defaultStickers';
 import { StickersTab } from './components/StickersTab';
+import { Toaster } from './components/ui/sonner';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
@@ -58,6 +59,7 @@ export default function App() {
   const [censorMode, setCensorMode] = useState(true);
   const [ageGateOpen, setAgeGateOpen] = useState(false);
   const [stickers, setStickers] = useState<Sticker[]>([]);
+  const [jokeStickerReactions, setJokeStickerReactions] = useState<Record<string, string[]>>({});
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [user, setUser] = useState<FirebaseUser | null>(null);
 
@@ -78,6 +80,7 @@ export default function App() {
     const storedDarkMode = localStorage.getItem('darkMode');
     const storedCensorMode = localStorage.getItem('censorMode');
     const storedStickers = localStorage.getItem('userStickers');
+    const storedJokeStickerReactions = localStorage.getItem('jokeStickerReactions');
 
     if (storedFavorites) setFavorites(JSON.parse(storedFavorites));
     if (storedLikes) setLikedJokes(new Set(JSON.parse(storedLikes)));
@@ -86,6 +89,7 @@ export default function App() {
     if (storedUserJokes) setUserJokes(JSON.parse(storedUserJokes));
     if (storedBattleVotes) setBattleVotes(JSON.parse(storedBattleVotes));
     if (storedStickers) setStickers(JSON.parse(storedStickers));
+    if (storedJokeStickerReactions) setJokeStickerReactions(JSON.parse(storedJokeStickerReactions));
 
     const isDark = storedDarkMode === 'true';
     if (isDark) {
@@ -313,6 +317,24 @@ export default function App() {
     localStorage.setItem('userStickers', JSON.stringify(newStickers));
   };
 
+  const handleAddStickerReaction = (jokeId: string, sticker: Sticker) => {
+    const currentList = jokeStickerReactions[jokeId] || [];
+    if (!currentList.includes(sticker.image)) {
+      const updated = {
+        ...jokeStickerReactions,
+        [jokeId]: [...currentList, sticker.image].slice(-6),
+      };
+      setJokeStickerReactions(updated);
+      localStorage.setItem('jokeStickerReactions', JSON.stringify(updated));
+    }
+  };
+
+  const handleReactToCurrentJokeWithSticker = (sticker: Sticker) => {
+    if (currentJoke) {
+      handleAddStickerReaction(currentJoke.id, sticker);
+    }
+  };
+
   const favoriteJokes = jokes.filter(joke => favorites.includes(joke.id));
   const totalVotes = Object.values(votes).reduce((acc, v) => acc + v.funny + v.cringe, 0);
 
@@ -442,7 +464,7 @@ export default function App() {
         )}
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-10 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-xl p-2 rounded-2xl border border-white/40 dark:border-neutral-700/50 shadow-sm">
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6 mb-10 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-xl p-2 rounded-2xl border border-white/40 dark:border-neutral-700/50 shadow-sm">
             <TabsTrigger
               value="piadas"
               className="text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-500 data-[state=active]:shadow-sm rounded-xl transition-all"
@@ -536,6 +558,9 @@ export default function App() {
                 userVotes={userVotes}
                 onCringeVote={handleCringeVote}
                 censorMode={censorMode}
+                stickerReactions={jokeStickerReactions[currentJoke.id] || []}
+                onAddStickerReaction={handleAddStickerReaction}
+                onGoToStickersTab={() => setActiveTab('stickers')}
               />
             ) : (
               <div className="text-center py-16 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800">
@@ -572,11 +597,18 @@ export default function App() {
           </TabsContent>
 
           <TabsContent value="stickers" className="space-y-6">
-            <StickerCreator onStickerCreated={handleStickerCreated} />
-            <StickersTab stickers={stickers} onDeleteSticker={handleDeleteSticker} />
+            <StickersTab
+              stickers={stickers}
+              onDeleteSticker={handleDeleteSticker}
+              onStickerCreated={handleStickerCreated}
+              onReactToCurrentJoke={handleReactToCurrentJokeWithSticker}
+            />
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Global Notifications for Sticker Copied / Saved */}
+      <Toaster richColors position="bottom-center" />
     </div>
   );
 }

@@ -69,21 +69,64 @@
     "ranking": "Ranking"
   },
   "stickers": {
-    "title": "Stickers / Memes",
+    "title": "Stickers & Memes",
+    "hub_sub": "¡Toca cualquier sticker para copiar y compartir donde quieras!",
+    "open_creator": "Crear Sticker",
+    "close_creator": "Cerrar Creador",
+    "search_placeholder": "Buscar por risa, meme, capibara, flork, reacción...",
+    "empty_search": "No se encontraron stickers para esta búsqueda.",
+    "empty_favorites": "Aún no tienes stickers favoritos. ¡Márcalos con la estrella ⭐!",
+    "empty_custom": "Aún no has creado ningún sticker. ¡Haz clic en 'Crear Sticker' arriba!",
+    "empty_general": "No hay stickers disponibles.",
+    "tabs": {
+      "all": "Todos",
+      "favorites": "Favoritos",
+      "recent": "Recientes",
+      "memes": "Memes",
+      "reactions": "Reacciones",
+      "viral": "Virales",
+      "custom": "Mis Stickers"
+    },
+    "modal": {
+      "subtitle": "Listo para copiar y compartir en cualquier chat",
+      "copied_button": "¡Copiado al portapapeles!",
+      "copy_button": "Copiar Sticker (Ctrl+V)",
+      "copied_toast": "¡Sticker copiado! Ya puedes pegarlo en cualquier chat (Ctrl+V)",
+      "copied_sub": "Imagen lista en el portapapeles.",
+      "downloaded_instead": "¡Sticker descargado en PNG para que lo envíes!",
+      "download_success": "¡Sticker descargado con fondo transparente!",
+      "share_sticker": "Compartir Sticker",
+      "download_png": "Descargar PNG",
+      "favorite": "Favorito",
+      "favorited": "En Favoritos ⭐",
+      "react_joke": "Reaccionar en el Chiste",
+      "reacted_toast": "¡Reacción con sticker enviada al chiste actual!",
+      "delete": "Eliminar"
+    },
     "creator": {
-      "title": "Crear Nuevo Sticker",
+      "title": "Sticker Studio",
+      "subtitle": "Crea stickers personalizados con recorte, borde blanco y textos meme",
       "upload_prompt": "Toca aquí para elegir una imagen",
-      "upload_sub": "Galería o Cámara",
-      "name_label": "Nombre (Opcional)",
-      "name_placeholder": "Ej: Reacción graciosa",
+      "upload_sub": "Selecciona una foto de tu galería o archivos (PNG, JPG, WebP)",
+      "name_label": "Nombre del Sticker",
+      "name_placeholder": "Ej: Mi Reacción",
+      "shape": "Forma de Recorte",
+      "outline": "Borde de Sticker",
+      "text_overlay": "Texto / Frase Meme",
+      "text_placeholder": "Ej: Calma vida / ¿Y está mal? / Me encantó",
+      "accessories": "Accesorios y Emojis",
       "submit": "Guardar Sticker",
-      "remove_title": "Eliminar imagen",
-      "default_name": "Sticker sin nombre"
+      "remove_title": "Cambiar foto",
+      "default_name": "Mi Sticker",
+      "success_toast": "¡Sticker creado con éxito en tu colección!"
     },
     "tab": {
       "collection": "Tu colección",
+      "custom": "Mis Stickers",
       "empty_title": "Aún no hay stickers guardados. ¡Crea el primero arriba!",
-      "delete_tip": "Eliminar Sticker"
+      "delete_tip": "Eliminar Sticker",
+      "added_fav": "Añadido a favoritos ⭐",
+      "removed_fav": "Eliminado de favoritos."
     },
     "errors": {
       "invalid_image": "Por favor, selecciona una imagen válida."

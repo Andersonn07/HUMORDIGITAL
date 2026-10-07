@@ -69,24 +69,67 @@
     "dashboard": "Dashboard"
   },
   "stickers": {
-    "title": "Stickers / Memes",
+    "title": "Figurinhas & Memes",
+    "hub_sub": "Toca em qualquer figurinha para copiar e partilhar onde quiseres!",
+    "open_creator": "Criar Figurinha",
+    "close_creator": "Fechar Criador",
+    "search_placeholder": "Pesquisar por risada, meme, capivara, flork, reação...",
+    "empty_search": "Nenhuma figurinha encontrada para esta pesquisa.",
+    "empty_favorites": "Ainda não tens figurinhas favoritas. Marca com a estrelinha ⭐!",
+    "empty_custom": "Nenhuma figurinha criada ainda. Clica em 'Criar Figurinha' acima!",
+    "empty_general": "Nenhuma figurinha disponível.",
+    "tabs": {
+      "all": "Todos",
+      "favorites": "Favoritos",
+      "recent": "Recentes",
+      "memes": "Memes",
+      "reactions": "Reações",
+      "viral": "Virais",
+      "custom": "Minhas Figurinhas"
+    },
+    "modal": {
+      "subtitle": "Pronta a copiar e partilhar em qualquer conversa",
+      "copied_button": "Copiado para a Área de Transferência!",
+      "copy_button": "Copiar Figurinha (Ctrl+V)",
+      "copied_toast": "Figurinha copiada! Podes colar em qualquer chat (Ctrl+V)",
+      "copied_sub": "Imagem pronta na área de transferência.",
+      "downloaded_instead": "Figurinha descarregada em PNG para poderes enviar!",
+      "download_success": "Figurinha descarregada com fundo transparente!",
+      "share_sticker": "Partilhar Figurinha",
+      "download_png": "Baixar PNG",
+      "favorite": "Favoritar",
+      "favorited": "Nos Favoritos ⭐",
+      "react_joke": "Reagir na Piada",
+      "reacted_toast": "Reação de figurinha enviada para a piada atual!",
+      "delete": "Apagar"
+    },
     "creator": {
-      "title": "Criar Novo Sticker",
-      "upload_prompt": "Toque aqui para escolher uma imagem",
-      "upload_sub": "Galeria ou Máquina Fotográfica",
-      "name_label": "Nome (Opcional)",
-      "name_placeholder": "Ex: Reação engraçada",
-      "submit": "Guardar Sticker",
-      "remove_title": "Remover imagem",
-      "default_name": "Sticker sem nome"
+      "title": "Sticker Studio",
+      "subtitle": "Cria figurinhas personalizadas com corte, contorno e legendas meme",
+      "upload_prompt": "Toca aqui para escolher uma imagem",
+      "upload_sub": "Seleciona uma foto da tua galeria ou ficheiros (PNG, JPG, WebP)",
+      "name_label": "Nome da Figurinha",
+      "name_placeholder": "Ex: Minha Reação",
+      "shape": "Formato de Corte",
+      "outline": "Borda de Figurinha",
+      "text_overlay": "Legenda / Frase Meme",
+      "text_placeholder": "Ex: Calma vida / E tá errado? / Amei",
+      "accessories": "Acessórios & Emojis",
+      "submit": "Guardar Figurinha",
+      "remove_title": "Trocar foto",
+      "default_name": "Minha Figurinha",
+      "success_toast": "Figurinha criada com sucesso no teu pacote!"
     },
     "tab": {
       "collection": "A tua coleção",
-      "empty_title": "Nenhum sticker guardado ainda. Crie o seu primeiro acima!",
-      "delete_tip": "Apagar Sticker"
+      "custom": "Minhas Figurinhas",
+      "empty_title": "Nenhum sticker guardado ainda. Cria o teu primeiro acima!",
+      "delete_tip": "Apagar Figurinha",
+      "added_fav": "Adicionado aos favoritos ⭐",
+      "removed_fav": "Removido dos favoritos."
     },
     "errors": {
-      "invalid_image": "Por favor, selecione uma imagem válida."
+      "invalid_image": "Por favor, seleciona uma imagem válida."
     }
   },
   "ranking": {

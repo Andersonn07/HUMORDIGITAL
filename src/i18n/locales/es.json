@@ -304,5 +304,98 @@
   },
   "jokes": {
     "emptyCategory": "Aún no hay bromas en esta categoría."
+  },
+  "settings": {
+    "button": "Ajustes",
+    "modalTitle": "Ajustes y Privacidad",
+    "modalSubtitle": "Gestiona tus preferencias, seguridad de datos y privacidad en RIBO.",
+    "tabs": {
+      "general": "General y Tema",
+      "privacy": "Privacidad y Datos",
+      "terms": "Términos y Acerca de"
+    },
+    "appearance": {
+      "title": "Apariencia e Idioma",
+      "themeTitle": "Tema Visual",
+      "themeSubtitle": "Alterna entre el modo claro y el modo oscuro",
+      "light": "Modo Claro",
+      "dark": "Modo Oscuro",
+      "languageTitle": "Idioma de la Aplicación",
+      "languageSubtitle": "Selecciona tu idioma preferido"
+    },
+    "dailyMood": {
+      "title": "Ánimo Diario",
+      "subtitle": "Tu estado de ánimo influye en las bromas sugeridas hoy",
+      "current": "Ánimo registrado hoy",
+      "noMood": "Aún no has registrado tu ánimo de hoy",
+      "change": "Cambiar Ánimo",
+      "reset": "Reiniciar Hoy",
+      "resetSuccess": "¡Ánimo diario reiniciado con éxito!"
+    },
+    "safety": {
+      "title": "Control de Contenido (+18)",
+      "censorTitle": "Filtro de Censura / Modo Adulto",
+      "censorDesc": "Oculta automáticamente chistes con lenguaje fuerte o temas maduros",
+      "censorActive": "Censura Activa (Modo Seguro)",
+      "censorInactive": "Modo Adulto Desbloqueado (+18)",
+      "censorBtnEnable": "Activar Censura",
+      "censorBtnDisable": "Desbloquear +18"
+    },
+    "account": {
+      "title": "Cuenta de Usuario",
+      "guest": "Sesión Local (Invitado)",
+      "guestDesc": "Tus datos y chistes se guardan únicamente en este navegador.",
+      "connected": "Sesión iniciada como",
+      "loginBtn": "Iniciar Sesión o Registrarse",
+      "logoutBtn": "Cerrar Sesión",
+      "logoutSuccess": "Sesión cerrada correctamente."
+    },
+    "data": {
+      "title": "Gestión de Datos Locales (RGPD / LGPD)",
+      "subtitle": "Consulta y controla todo lo guardado en tu dispositivo",
+      "stats": {
+        "favorites": "Favoritos",
+        "likes": "Me gusta",
+        "votes": "Votos Registrados",
+        "stickers": "Stickers Creados",
+        "battleJokes": "Chistes en Batalla"
+      },
+      "export": "Exportar Mis Datos (Copia JSON)",
+      "exportDesc": "Descarga una copia de tus favoritos, chistes y stickers.",
+      "exportBtn": "Descargar Copia",
+      "import": "Restaurar Datos (Importar JSON)",
+      "importDesc": "Selecciona un archivo JSON previamente exportado de RIBO.",
+      "importBtn": "Seleccionar Archivo",
+      "importSuccess": "¡Datos restaurados con éxito!",
+      "importError": "Archivo inválido o dañado.",
+      "clear": "Eliminar Datos Almacenados",
+      "clearDesc": "Elimina permanentemente los datos locales de este navegador.",
+      "clearBtn": "Limpiar Datos...",
+      "clearOptions": {
+        "title": "¿Qué deseas eliminar?",
+        "favorites": "Solo Favoritos y Me gusta",
+        "votes": "Solo Historial de Votos",
+        "stickers": "Solo Stickers Creados",
+        "all": "Eliminar Todo (Reinicio de Fábrica)"
+      },
+      "confirmTitle": "Confirmar Eliminación",
+      "confirmDesc": "Esta acción no se puede deshacer. Los datos seleccionados serán eliminados del almacenamiento local.",
+      "confirmBtn": "Sí, Eliminar",
+      "cancelBtn": "Cancelar",
+      "clearedSuccess": "¡Datos eliminados con éxito!"
+    },
+    "terms": {
+      "title": "Privacidad, Transparencia y Legal",
+      "clientFirstTitle": "100% Local y Privado",
+      "clientFirstDesc": "En RIBO, tus favoritos, reacciones y stickers personalizados se guardan exclusivamente en el almacenamiento local de tu navegador (localStorage). No se rastrea ni vende información personal.",
+      "noAdsTitle": "Sin Anuncios Invasivos",
+      "noAdsDesc": "Priorizamos una experiencia limpia y divertida, sin anuncios molestos ni venta de datos a terceros.",
+      "lgpdTitle": "Conformidad RGPD y LGPD",
+      "lgpdDesc": "Diseñado bajo privacidad por defecto: puedes consultar, exportar en formato JSON o borrar todos tus registros en cualquier momento.",
+      "contentTitle": "Responsabilidad del Contenido",
+      "contentDesc": "Los chistes y stickers de la comunidad son creados por los usuarios. Fomenta el respeto y el buen humor.",
+      "appInfo": "RIBO — Versión 1.0.0",
+      "madeWith": "Diseñado para el humor inteligente y la privacidad."
+    }
   }
 }

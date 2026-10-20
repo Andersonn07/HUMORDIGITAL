@@ -310,5 +310,98 @@
   },
   "jokes": {
     "emptyCategory": "No jokes in this category yet."
+  },
+  "settings": {
+    "button": "Settings",
+    "modalTitle": "Settings & Privacy",
+    "modalSubtitle": "Manage your preferences, data security, and privacy on RIBO.",
+    "tabs": {
+      "general": "General & Theme",
+      "privacy": "Privacy & Data",
+      "terms": "Terms & About"
+    },
+    "appearance": {
+      "title": "Appearance & Language",
+      "themeTitle": "Visual Theme",
+      "themeSubtitle": "Switch between clean light mode and immersive dark mode",
+      "light": "Light Mode",
+      "dark": "Dark Mode",
+      "languageTitle": "Application Language",
+      "languageSubtitle": "Select your preferred browsing language"
+    },
+    "dailyMood": {
+      "title": "Daily Mood",
+      "subtitle": "Your daily mood affects the jokes suggested for you",
+      "current": "Logged mood today",
+      "noMood": "You haven't logged your mood today yet",
+      "change": "Change Mood",
+      "reset": "Reset Today",
+      "resetSuccess": "Today's mood reset successfully!"
+    },
+    "safety": {
+      "title": "Content Safety (+18)",
+      "censorTitle": "Censorship Filter / Adult Mode",
+      "censorDesc": "Automatically hides jokes with strong language, sexual themes, or heavy humor",
+      "censorActive": "Censorship Active (Safe Mode)",
+      "censorInactive": "Adult Mode Unlocked (+18)",
+      "censorBtnEnable": "Enable Censorship",
+      "censorBtnDisable": "Unlock +18"
+    },
+    "account": {
+      "title": "User Account",
+      "guest": "Local Guest Session",
+      "guestDesc": "Your jokes and preferences are stored exclusively in your browser.",
+      "connected": "Signed in as",
+      "loginBtn": "Sign In or Sign Up",
+      "logoutBtn": "Sign Out",
+      "logoutSuccess": "Signed out successfully."
+    },
+    "data": {
+      "title": "Local Data Management (GDPR / LGPD)",
+      "subtitle": "Inspect and manage data stored on your device",
+      "stats": {
+        "favorites": "Favorites",
+        "likes": "Likes",
+        "votes": "Votes Cast",
+        "stickers": "Custom Stickers",
+        "battleJokes": "Battle Jokes"
+      },
+      "export": "Export My Data (JSON Backup)",
+      "exportDesc": "Download a full backup of your favorites, jokes, and stickers.",
+      "exportBtn": "Download Backup",
+      "import": "Restore Backup (Import JSON)",
+      "importDesc": "Load a previously exported RIBO JSON backup file.",
+      "importBtn": "Choose File",
+      "importSuccess": "Data restored successfully!",
+      "importError": "Invalid or corrupted backup file.",
+      "clear": "Delete Stored Data",
+      "clearDesc": "Permanently clear local data from this browser.",
+      "clearBtn": "Clear Data...",
+      "clearOptions": {
+        "title": "What would you like to delete?",
+        "favorites": "Favorites & Likes Only",
+        "votes": "Vote History Only",
+        "stickers": "Custom Stickers Only",
+        "all": "Delete Everything (Factory Reset)"
+      },
+      "confirmTitle": "Confirm Deletion",
+      "confirmDesc": "This action cannot be undone. Selected data will be wiped from local storage.",
+      "confirmBtn": "Yes, Delete",
+      "cancelBtn": "Cancel",
+      "clearedSuccess": "Data deleted successfully!"
+    },
+    "terms": {
+      "title": "Privacy, Transparency & Legal",
+      "clientFirstTitle": "100% Local-First & Private",
+      "clientFirstDesc": "On RIBO, your preferences, reactions, and custom stickers live in your browser's local storage (localStorage). No personal data is tracked or sold.",
+      "noAdsTitle": "Zero Invasive Ads",
+      "noAdsDesc": "We prioritize a clean, fun user experience with no pop-ups, no data brokers, and no tracking cookies.",
+      "lgpdTitle": "GDPR & LGPD Compliant",
+      "lgpdDesc": "Built with privacy by design: you can inspect, export to JSON, or wipe all your stored data anytime.",
+      "contentTitle": "Content Responsibility",
+      "contentDesc": "Community jokes and custom stickers are created by users. Keep it fun and respectful.",
+      "appInfo": "RIBO — Version 1.0.0",
+      "madeWith": "Built for intelligent humor and user privacy."
+    }
   }
 }

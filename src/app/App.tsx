@@ -10,19 +10,19 @@ import { JokeBattle } from './components/JokeBattle';
 import { AgeGateModal } from './components/AgeGateModal';
 import { CensorToggle } from './components/CensorToggle';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
-import { Laugh, Heart, Trophy, Swords, Moon, Sun, Image as ImageIcon, User, BarChart2 } from 'lucide-react';
+import { Laugh, Heart, Trophy, Swords, Moon, Sun, Image as ImageIcon, User, BarChart2, Settings } from 'lucide-react';
 import { jokes } from './data/jokes';
 import riboLogoLight from '../assets/ribo-logo-light.png';
 import riboLogoDark from '../assets/ribo-logo-dark.png';
 import { Sticker } from './data/defaultStickers';
 import { StickersTab } from './components/StickersTab';
 import { Toaster } from './components/ui/sonner';
-import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { MoodDashboard } from './components/MoodDashboard';
 import { AuthModal } from './components/AuthModal';
+import { SettingsModal, DataStats } from './components/SettingsModal';
 
 interface VoteData {
   funny: number;
@@ -61,6 +61,7 @@ export default function App() {
   const [stickers, setStickers] = useState<Sticker[]>([]);
   const [jokeStickerReactions, setJokeStickerReactions] = useState<Record<string, string[]>>({});
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [user, setUser] = useState<FirebaseUser | null>(null);
 
   useEffect(() => {
@@ -69,50 +70,54 @@ export default function App() {
       setUser(currentUser);
     });
 
-    const storedFavorites = localStorage.getItem('favoriteJokes');
-    const storedLikes = localStorage.getItem('likedJokes');
-    const storedVotes = localStorage.getItem('jokeVotes');
-    const storedUserVotes = localStorage.getItem('jokeUserVotes');
-    const storedMoodKey = localStorage.getItem('moodDayKey');
-    const storedMoodId = localStorage.getItem('moodTodayId');
-    const storedUserJokes = localStorage.getItem('userJokes');
-    const storedBattleVotes = localStorage.getItem('battleVotes');
-    const storedDarkMode = localStorage.getItem('darkMode');
-    const storedCensorMode = localStorage.getItem('censorMode');
-    const storedStickers = localStorage.getItem('userStickers');
-    const storedJokeStickerReactions = localStorage.getItem('jokeStickerReactions');
+    try {
+      const storedFavorites = localStorage.getItem('favoriteJokes');
+      const storedLikes = localStorage.getItem('likedJokes');
+      const storedVotes = localStorage.getItem('jokeVotes');
+      const storedUserVotes = localStorage.getItem('jokeUserVotes');
+      const storedMoodKey = localStorage.getItem('moodDayKey');
+      const storedMoodId = localStorage.getItem('moodTodayId');
+      const storedUserJokes = localStorage.getItem('userJokes');
+      const storedBattleVotes = localStorage.getItem('battleVotes');
+      const storedDarkMode = localStorage.getItem('darkMode');
+      const storedCensorMode = localStorage.getItem('censorMode');
+      const storedStickers = localStorage.getItem('userStickers');
+      const storedJokeStickerReactions = localStorage.getItem('jokeStickerReactions');
 
-    if (storedFavorites) setFavorites(JSON.parse(storedFavorites));
-    if (storedLikes) setLikedJokes(new Set(JSON.parse(storedLikes)));
-    if (storedVotes) setVotes(JSON.parse(storedVotes));
-    if (storedUserVotes) setUserVotes(JSON.parse(storedUserVotes));
-    if (storedUserJokes) setUserJokes(JSON.parse(storedUserJokes));
-    if (storedBattleVotes) setBattleVotes(JSON.parse(storedBattleVotes));
-    if (storedStickers) setStickers(JSON.parse(storedStickers));
-    if (storedJokeStickerReactions) setJokeStickerReactions(JSON.parse(storedJokeStickerReactions));
+      if (storedFavorites) setFavorites(JSON.parse(storedFavorites));
+      if (storedLikes) setLikedJokes(new Set(JSON.parse(storedLikes)));
+      if (storedVotes) setVotes(JSON.parse(storedVotes));
+      if (storedUserVotes) setUserVotes(JSON.parse(storedUserVotes));
+      if (storedUserJokes) setUserJokes(JSON.parse(storedUserJokes));
+      if (storedBattleVotes) setBattleVotes(JSON.parse(storedBattleVotes));
+      if (storedStickers) setStickers(JSON.parse(storedStickers));
+      if (storedJokeStickerReactions) setJokeStickerReactions(JSON.parse(storedJokeStickerReactions));
 
-    const isDark = storedDarkMode === 'true';
-    if (isDark) {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
+      const isDark = storedDarkMode === 'true';
+      if (isDark) {
+        setDarkMode(true);
+        document.documentElement.classList.add('dark');
+      }
 
-    // censorMode defaults to true unless explicitly set to false
-    if (storedCensorMode === 'false') {
-      setCensorMode(false);
-    }
+      // censorMode defaults to true unless explicitly set to false
+      if (storedCensorMode === 'false') {
+        setCensorMode(false);
+      }
 
-    // Load today's mood (resets each day)
-    const todayKey = getTodayKey();
-    if (storedMoodKey === todayKey && storedMoodId) {
-      const found = moods.find(m => m.id === storedMoodId);
-      if (found) {
-        setTodayMood(found);
+      // Load today's mood (resets each day)
+      const todayKey = getTodayKey();
+      if (storedMoodKey === todayKey && storedMoodId) {
+        const found = moods.find(m => m.id === storedMoodId);
+        if (found) {
+          setTodayMood(found);
+        } else {
+          setTimeout(() => setMoodPickerOpen(true), 600);
+        }
       } else {
         setTimeout(() => setMoodPickerOpen(true), 600);
       }
-    } else {
-      setTimeout(() => setMoodPickerOpen(true), 600);
+    } catch (e) {
+      console.warn('Could not parse stored data from localStorage:', e);
     }
 
     return () => unsubscribe();
@@ -160,13 +165,18 @@ export default function App() {
     ? (censorMode ? jokes.filter(j => !j.mature) : jokes)
     : jokes.filter(joke => joke.category === selectedCategory);
 
-  const currentJoke = filteredJokes[currentJokeIndex];
+  const safeJokeIndex = filteredJokes.length > 0
+    ? (currentJokeIndex >= filteredJokes.length ? 0 : Math.max(0, currentJokeIndex))
+    : 0;
+  const currentJoke = filteredJokes[safeJokeIndex];
 
   const handleNext = () => {
+    if (filteredJokes.length === 0) return;
     setCurrentJokeIndex((prev) => (prev + 1) % filteredJokes.length);
   };
 
   const handlePrevious = () => {
+    if (filteredJokes.length === 0) return;
     setCurrentJokeIndex((prev) => (prev - 1 + filteredJokes.length) % filteredJokes.length);
   };
 
@@ -198,6 +208,7 @@ export default function App() {
   };
 
   const handleRandom = () => {
+    if (filteredJokes.length === 0) return;
     const randomIndex = Math.floor(Math.random() * filteredJokes.length);
     setCurrentJokeIndex(randomIndex);
   };
@@ -338,12 +349,150 @@ export default function App() {
   const favoriteJokes = jokes.filter(joke => favorites.includes(joke.id));
   const totalVotes = Object.values(votes).reduce((acc, v) => acc + v.funny + v.cringe, 0);
 
+  const handleResetMood = () => {
+    localStorage.removeItem('moodDayKey');
+    localStorage.removeItem('moodTodayId');
+    setTodayMood(null);
+  };
+
+  const handleExportData = () => {
+    const backupData = {
+      app: 'RIBO',
+      version: '1.0.0',
+      exportedAt: new Date().toISOString(),
+      favorites,
+      likedJokes: Array.from(likedJokes),
+      votes,
+      userVotes,
+      userJokes,
+      battleVotes,
+      stickers,
+    };
+    const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ribo-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImportData = (data: any): boolean => {
+    if (!data || typeof data !== 'object') return false;
+    let importedAny = false;
+    if (Array.isArray(data.favorites)) {
+      setFavorites(data.favorites);
+      localStorage.setItem('favoriteJokes', JSON.stringify(data.favorites));
+      importedAny = true;
+    }
+    if (Array.isArray(data.likedJokes)) {
+      setLikedJokes(new Set(data.likedJokes));
+      localStorage.setItem('likedJokes', JSON.stringify(data.likedJokes));
+      importedAny = true;
+    }
+    if (data.votes && typeof data.votes === 'object') {
+      setVotes(data.votes);
+      localStorage.setItem('jokeVotes', JSON.stringify(data.votes));
+      importedAny = true;
+    }
+    if (data.userVotes && typeof data.userVotes === 'object') {
+      setUserVotes(data.userVotes);
+      localStorage.setItem('jokeUserVotes', JSON.stringify(data.userVotes));
+      importedAny = true;
+    }
+    if (Array.isArray(data.userJokes)) {
+      setUserJokes(data.userJokes);
+      localStorage.setItem('userJokes', JSON.stringify(data.userJokes));
+      importedAny = true;
+    }
+    if (data.battleVotes && typeof data.battleVotes === 'object') {
+      setBattleVotes(data.battleVotes);
+      localStorage.setItem('battleVotes', JSON.stringify(data.battleVotes));
+      importedAny = true;
+    }
+    if (Array.isArray(data.stickers)) {
+      setStickers(data.stickers);
+      localStorage.setItem('userStickers', JSON.stringify(data.stickers));
+      importedAny = true;
+    }
+    return importedAny;
+  };
+
+  const handleClearData = (scope: 'all' | 'favorites' | 'votes' | 'stickers') => {
+    if (scope === 'all') {
+      localStorage.removeItem('favoriteJokes');
+      localStorage.removeItem('likedJokes');
+      localStorage.removeItem('jokeVotes');
+      localStorage.removeItem('jokeUserVotes');
+      localStorage.removeItem('userJokes');
+      localStorage.removeItem('battleVotes');
+      localStorage.removeItem('userStickers');
+      localStorage.removeItem('jokeStickerReactions');
+      localStorage.removeItem('moodDayKey');
+      localStorage.removeItem('moodTodayId');
+      setFavorites([]);
+      setLikedJokes(new Set());
+      setVotes({});
+      setUserVotes({});
+      setUserJokes([]);
+      setBattleVotes({});
+      setStickers([]);
+      setJokeStickerReactions({});
+      setTodayMood(null);
+    } else if (scope === 'favorites') {
+      localStorage.removeItem('favoriteJokes');
+      localStorage.removeItem('likedJokes');
+      setFavorites([]);
+      setLikedJokes(new Set());
+    } else if (scope === 'votes') {
+      localStorage.removeItem('jokeVotes');
+      localStorage.removeItem('jokeUserVotes');
+      localStorage.removeItem('battleVotes');
+      setVotes({});
+      setUserVotes({});
+      setBattleVotes({});
+    } else if (scope === 'stickers') {
+      localStorage.removeItem('userStickers');
+      localStorage.removeItem('jokeStickerReactions');
+      setStickers([]);
+      setJokeStickerReactions({});
+    }
+  };
+
+  const dataStats: DataStats = {
+    favoritesCount: favorites.length,
+    likesCount: likedJokes.size,
+    votesCount: totalVotes,
+    stickersCount: stickers.length,
+    battleJokesCount: userJokes.length,
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 via-rose-50 to-purple-100 dark:from-neutral-950 dark:via-purple-950/20 dark:to-neutral-950 transition-colors duration-500">
       {/* Auth Modal */}
       <AuthModal 
         isOpen={isAuthModalOpen} 
         onClose={() => setIsAuthModalOpen(false)} 
+      />
+
+      {/* Settings & Privacy Modal */}
+      <SettingsModal
+        isOpen={isSettingsModalOpen}
+        onClose={() => setIsSettingsModalOpen(false)}
+        darkMode={darkMode}
+        onToggleDarkMode={handleToggleDarkMode}
+        censorMode={censorMode}
+        onToggleCensor={handleToggleCensor}
+        user={user}
+        onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        onSignOut={() => auth.signOut()}
+        todayMood={todayMood}
+        onOpenMoodPicker={() => setMoodPickerOpen(true)}
+        onResetMood={handleResetMood}
+        dataStats={dataStats}
+        onExportData={handleExportData}
+        onImportData={handleImportData}
+        onClearData={handleClearData}
       />
       
       {/* Mood Picker Modal */}
@@ -367,7 +516,6 @@ export default function App() {
         <div className="relative overflow-hidden flex flex-col items-center justify-center mb-10 py-12 px-6 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/60 dark:border-neutral-700/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1">
           {/* Controls row */}
           <div className="self-stretch flex items-center justify-end gap-3 mb-6">
-            <LanguageSwitcher />
             <button
                onClick={() => user ? auth.signOut() : setIsAuthModalOpen(true)}
                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
@@ -384,17 +532,13 @@ export default function App() {
             </button>
             <CensorToggle censorMode={censorMode} onToggle={handleToggleCensor} />
             <button
-              onClick={handleToggleDarkMode}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
-              title={darkMode ? t('app.themeLight') : t('app.themeDark')}
+              onClick={() => setIsSettingsModalOpen(true)}
+              className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200 hover:scale-105 active:scale-95"
+              title={t('settings.modalTitle')}
             >
-              {darkMode ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
+              <Settings className="w-4 h-4 text-orange-500" />
               <span className="text-sm font-medium hidden sm:inline">
-                {darkMode ? t('app.themeLight') : t('app.themeDark')}
+                {t('settings.button')}
               </span>
             </button>
           </div>
@@ -552,7 +696,7 @@ export default function App() {
                 onNext={handleNext}
                 onPrevious={handlePrevious}
                 onRandom={handleRandom}
-                currentIndex={currentJokeIndex}
+                currentIndex={safeJokeIndex}
                 totalJokes={filteredJokes.length}
                 votes={votes}
                 userVotes={userVotes}
@@ -605,6 +749,24 @@ export default function App() {
             />
           </TabsContent>
         </Tabs>
+
+        {/* Footer with Settings & Privacy Shortcut */}
+        <footer className="mt-16 pt-8 pb-4 text-center border-t border-neutral-200/60 dark:border-neutral-800/60 text-xs text-neutral-500 dark:text-neutral-400">
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-2">
+            <button
+              onClick={() => setIsSettingsModalOpen(true)}
+              className="hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors flex items-center gap-1.5"
+            >
+              <Settings className="w-3.5 h-3.5 text-orange-500" />
+              {t('settings.modalTitle')}
+            </button>
+            <span className="text-neutral-300 dark:text-neutral-700">•</span>
+            <span>{t('settings.terms.appInfo')}</span>
+          </div>
+          <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
+            {t('settings.terms.madeWith')}
+          </p>
+        </footer>
       </div>
 
       {/* Global Notifications for Sticker Copied / Saved */}

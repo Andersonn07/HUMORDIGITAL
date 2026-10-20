@@ -308,5 +308,98 @@
   },
   "jokes": {
     "emptyCategory": "Nenhuma piada nesta categoria ainda."
+  },
+  "settings": {
+    "button": "Definições",
+    "modalTitle": "Definições & Privacidade",
+    "modalSubtitle": "Gere as suas preferências visuais, proteção de dados e privacidade no RIBO.",
+    "tabs": {
+      "general": "Geral & Aparência",
+      "privacy": "Privacidade & Dados",
+      "terms": "Termos & Sobre"
+    },
+    "appearance": {
+      "title": "Aparência e Idioma",
+      "themeTitle": "Tema Visual",
+      "themeSubtitle": "Alterne entre o visual claro e o modo noturno imersivo",
+      "light": "Modo Claro",
+      "dark": "Modo Noturno",
+      "languageTitle": "Idioma da Aplicação",
+      "languageSubtitle": "Escolha o seu idioma de navegação"
+    },
+    "dailyMood": {
+      "title": "Humor Diário",
+      "subtitle": "O humor influencia as piadas sugeridas para si hoje",
+      "current": "Humor registado hoje",
+      "noMood": "Ainda não registou o seu humor hoje",
+      "change": "Alterar Humor",
+      "reset": "Redefinir Hoje",
+      "resetSuccess": "Humor de hoje redefinido com sucesso!"
+    },
+    "safety": {
+      "title": "Controlo de Conteúdo (+18)",
+      "censorTitle": "Filtro de Censura / Modo Adulto",
+      "censorDesc": "Oculta automaticamente piadas com palavrões, temas sexuais ou humor pesado",
+      "censorActive": "Censura Ativa (Modo Seguro)",
+      "censorInactive": "Modo Adulto Desbloqueado (+18)",
+      "censorBtnEnable": "Ativar Censura",
+      "censorBtnDisable": "Desbloquear +18"
+    },
+    "account": {
+      "title": "Conta de Utilizador",
+      "guest": "Sessão Local (Convidado)",
+      "guestDesc": "Os seus dados e piadas ficam guardados apenas no seu navegador.",
+      "connected": "Sessão iniciada como",
+      "loginBtn": "Entrar ou Criar Conta",
+      "logoutBtn": "Terminar Sessão",
+      "logoutSuccess": "Sessão terminada."
+    },
+    "data": {
+      "title": "Gestão de Dados Locais (LGPD / RGPD)",
+      "subtitle": "Veja e controle tudo o que está guardado no seu dispositivo",
+      "stats": {
+        "favorites": "Favoritos",
+        "likes": "Curtidas",
+        "votes": "Votos Registados",
+        "stickers": "Figurinhas Criadas",
+        "battleJokes": "Piadas na Batalha"
+      },
+      "export": "Exportar Meus Dados (Backup JSON)",
+      "exportDesc": "Descarregue uma cópia dos seus favoritos, piadas e figurinhas.",
+      "exportBtn": "Descarregar Backup",
+      "import": "Restaurar Dados (Importar Backup)",
+      "importDesc": "Selecione um ficheiro JSON previamente exportado do RIBO.",
+      "importBtn": "Selecionar Ficheiro",
+      "importSuccess": "Dados restaurados com sucesso!",
+      "importError": "Ficheiro inválido ou corrompido.",
+      "clear": "Eliminar Dados Armazenados",
+      "clearDesc": "Remova dados locais permanentemente deste navegador.",
+      "clearBtn": "Limpar Dados...",
+      "clearOptions": {
+        "title": "O que deseja eliminar?",
+        "favorites": "Apenas Favoritos & Curtidas",
+        "votes": "Apenas Histórico de Votos",
+        "stickers": "Apenas Figurinhas Criadas",
+        "all": "Eliminar Tudo (Reset de Fábrica)"
+      },
+      "confirmTitle": "Confirmar Eliminação",
+      "confirmDesc": "Esta ação não pode ser desfeita. Os dados selecionados serão removidos do armazenamento local.",
+      "confirmBtn": "Sim, Eliminar",
+      "cancelBtn": "Cancelar",
+      "clearedSuccess": "Dados eliminados com sucesso!"
+    },
+    "terms": {
+      "title": "Privacidade, Transparência & Legal",
+      "clientFirstTitle": "100% Local-First & Privado",
+      "clientFirstDesc": "No RIBO, os seus favoritos, reações e figurinhas personalizadas são guardados exclusivamente no armazenamento local (localStorage) do seu navegador. Não há rastreamento oculto ou partilha com terceiros.",
+      "noAdsTitle": "Sem Anúncios Invasivos",
+      "noAdsDesc": "Acreditamos numa experiência de humor pura e descontraída, sem pop-ups, sem venda de dados e sem anunciantes a monitorizar o seu comportamento.",
+      "lgpdTitle": "Conformidade LGPD & RGPD",
+      "lgpdDesc": "Em conformidade com os princípios de privacidade por design, o utilizador tem pleno controlo para consultar, exportar em formato aberto (JSON) ou eliminar permanentemente os seus registos.",
+      "contentTitle": "Responsabilidade pelo Conteúdo",
+      "contentDesc": "As piadas submetidas na comunidade e figurinhas criadas são geradas por utilizadores. Incentive o bom humor e respeito mútuo.",
+      "appInfo": "RIBO — Versão 1.0.0",
+      "madeWith": "Desenvolvido com foco em humor inteligente e privacidade."
+    }
   }
 }

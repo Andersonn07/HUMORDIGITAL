@@ -184,7 +184,9 @@
     "jokeLabel": "A Tua Piada",
     "jokePlaceholder": "Escreve aqui a tua piada mais engraçada...",
     "cancel": "Cancelar",
-    "publish": "Publicar Piada"
+    "publish": "Publicar Piada",
+    "generate": "Gerar com IA",
+    "generating": "Gerando..."
   },
   "jokeBattle": {
     "empty": {

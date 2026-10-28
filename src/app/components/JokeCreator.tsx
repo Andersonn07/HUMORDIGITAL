@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Plus, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
+import { gerarPiadaComIA } from '../../lib/jokeAi';
 
 export interface UserJoke {
   id: string;
@@ -25,6 +27,7 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
   const [category, setCategory] = useState('anedotas');
   const [isExpanded, setIsExpanded] = useState(false);
   const jokeCategories = ['anedotas', 'secas', 'negro', 'trocadilhos', 'inteligentes', 'observacionais'];
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -50,6 +53,22 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
     onJokeCreated(newJoke);
     setContent('');
     setIsExpanded(false);
+  };
+
+  // Generate a joke using Gemini AI
+  const handleGenerate = async () => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      const generated = await gerarPiadaComIA(category);
+      setContent(generated.trim());
+    } catch (e) {
+      console.error('Erro ao gerar piada:', e);
+      // Mostrar toast de erro ao usuário
+      toast.error('Falha ao gerar piada. Verifique a chave da API e a conexão.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!isExpanded) {
@@ -129,13 +148,11 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
         <div className="flex gap-3 pt-2">
           <button
             type="button"
-            onClick={() => {
-              setIsExpanded(false);
-              setContent('');
-            }}
-            className="flex-1 px-4 py-3 border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors font-semibold"
+            onClick={handleGenerate}
+            disabled={loading}
+            className="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
           >
-            {t('jokeCreator.cancel')}
+            {loading ? t('jokeCreator.generating') : t('jokeCreator.generate')}
           </button>
           <button
             type="submit"
@@ -143,6 +160,16 @@ export function JokeCreator({ onJokeCreated }: JokeCreatorProps) {
             className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
           >
             {t('jokeCreator.publish')}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setIsExpanded(false);
+              setContent('');
+            }}
+            className="flex-1 px-4 py-3 border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors font-semibold"
+          >
+            {t('jokeCreator.cancel')}
           </button>
         </div>
       </form>

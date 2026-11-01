@@ -1,0 +1,5 @@
+package com.humordigital.humor_digital
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()

@@ -29,3 +29,17 @@ dist-ssr
 HUMORDIGITAL/
 test-api.mjs
 test-*.mjs
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+*.iml
+android/.gradle/
+android/local.properties
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+macos/Flutter/ephemeral/
+

@@ -33,16 +33,19 @@ class SettingsDialog extends StatefulWidget {
 
 class _SettingsDialogState extends State<SettingsDialog> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late TextEditingController _groqApiKeyController;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _groqApiKeyController = TextEditingController(text: widget.storage.getGroqApiKey() ?? '');
   }
 
   @override
   void dispose() {
     _tabController.dispose();
+    _groqApiKeyController.dispose();
     super.dispose();
   }
 
@@ -244,6 +247,77 @@ class _SettingsDialogState extends State<SettingsDialog> with SingleTickerProvid
                           onChanged: (val) {
                             if (val != null) widget.onSetLanguage(val);
                           },
+                        ),
+                      ),
+                      const Divider(),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple.withValues(alpha: 0.15),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(Icons.bolt_rounded, color: Colors.deepPurple, size: 20),
+                          ),
+                          const SizedBox(width: 8),
+                          const Text(
+                            'Inteligência Artificial (Groq ⚡)',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(
+                            color: Colors.deepPurple.withValues(alpha: 0.25),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.green,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                const Text(
+                                  'Groq API Ativa ⚡ (Ultra-rápida)',
+                                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.green),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 6),
+                            const Text(
+                              'Geração ultra-rápida com Llama 3.3 / GPT-OSS.',
+                              style: TextStyle(fontSize: 11, color: Colors.grey),
+                            ),
+                            const SizedBox(height: 10),
+                            TextField(
+                              controller: _groqApiKeyController,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                labelText: 'Chave de API Groq (Opcional)',
+                                hintText: 'Deixe vazio para usar a chave padrão',
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                              ),
+                              onChanged: (val) {
+                                widget.storage.setGroqApiKey(val);
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     ],

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { jokes } from '../data/jokes';
 import { Trophy, Skull, BarChart2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { getAppLanguage } from '../../i18n/utils';
 
 interface VoteData {
   funny: number;
@@ -155,7 +156,7 @@ export function CringeRanking({ votes }: CringeRankingProps) {
                       </div>
 
                       <p className="text-neutral-800 dark:text-neutral-100 text-sm leading-relaxed mb-3 line-clamp-3">
-                        {joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt}
+                        {joke.content[getAppLanguage(i18n.language)] || joke.content.pt}
                       </p>
 
                       {/* Mini barra */}

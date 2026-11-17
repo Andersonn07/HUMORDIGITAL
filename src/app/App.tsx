@@ -23,6 +23,7 @@ import { auth } from '../lib/firebase';
 import { MoodDashboard } from './components/MoodDashboard';
 import { AuthModal } from './components/AuthModal';
 import { SettingsModal, DataStats } from './components/SettingsModal';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 
 interface VoteData {
   funny: number;
@@ -515,38 +516,43 @@ export default function App() {
         {/* Header */}
         <div className="relative overflow-hidden flex flex-col items-center justify-center mb-10 py-12 px-6 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/60 dark:border-neutral-700/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1">
           {/* Controls row */}
-          <div className="self-stretch flex items-center justify-end gap-3 mb-6">
-            <button
-               onClick={() => user ? auth.signOut() : setIsAuthModalOpen(true)}
-               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
-               title={user ? t('app.logout') : t('app.login')}
-            >
-               {user && user.photoURL ? (
-                 <img src={user.photoURL} alt="User" className="w-5 h-5 rounded-full" />
-               ) : (
-                 <User className="w-4 h-4" />
-               )}
-               <span className="text-sm font-medium hidden sm:inline">
-                 {user ? t('app.logout') : t('app.login')}
-               </span>
-            </button>
-            <CensorToggle censorMode={censorMode} onToggle={handleToggleCensor} />
-            <button
-              onClick={() => setIsSettingsModalOpen(true)}
-              className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200 hover:scale-105 active:scale-95"
-              title={t('settings.modalTitle')}
-            >
-              <Settings className="w-4 h-4 text-orange-500" />
-              <span className="text-sm font-medium hidden sm:inline">
-                {t('settings.button')}
-              </span>
-            </button>
+          <div className="self-stretch flex items-center justify-between gap-2.5 mb-6 flex-wrap">
+            <LanguageSwitcher />
+
+            <div className="flex items-center gap-2">
+              <button
+                 onClick={() => user ? auth.signOut() : setIsAuthModalOpen(true)}
+                 className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200 active:scale-95"
+                 title={user ? t('app.logout') : t('app.login')}
+              >
+                 {user && user.photoURL ? (
+                   <img src={user.photoURL} alt="User" className="w-4 h-4 rounded-full" />
+                 ) : (
+                   <User className="w-4 h-4" />
+                 )}
+                 <span className="text-xs sm:text-sm font-medium hidden sm:inline">
+                   {user ? t('app.logout') : t('app.login')}
+                 </span>
+              </button>
+              <CensorToggle censorMode={censorMode} onToggle={handleToggleCensor} />
+              <button
+                onClick={() => setIsSettingsModalOpen(true)}
+                className="flex items-center gap-2 px-3 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200 hover:scale-105 active:scale-95"
+                title={t('settings.modalTitle')}
+                aria-label={t('settings.modalTitle')}
+              >
+                <Settings className="w-4 h-4 text-orange-500" />
+                <span className="text-xs sm:text-sm font-medium hidden sm:inline">
+                  {t('settings.button')}
+                </span>
+              </button>
+            </div>
           </div>
 
           <img
             src={darkMode ? riboLogoDark : riboLogoLight}
             alt="RIBO Logo"
-            className="h-64 md:h-72 w-auto mb-6 drop-shadow-lg hover:scale-105 transition-transform duration-300 mx-auto"
+            className="h-36 sm:h-48 md:h-56 w-auto mb-4 drop-shadow-md hover:scale-105 transition-transform duration-300 mx-auto"
           />
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 mb-3">
             {t('app.title')}

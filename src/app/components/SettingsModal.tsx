@@ -1,6 +1,8 @@
 import { useState, useRef, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { User as FirebaseUser } from 'firebase/auth';
+import { getAppLanguage } from '../../i18n/utils';
+import { getGroqApiKey, setGroqApiKey, getGeminiApiKey, setGeminiApiKey } from '../../lib/jokeAi';
 import { 
   Settings, 
   ShieldCheck, 
@@ -27,7 +29,9 @@ import {
   Image as ImageIcon,
   Swords,
   Trophy,
-  Info
+  Info,
+  Sparkles,
+  Key
 } from 'lucide-react';
 import {
   Dialog,
@@ -115,8 +119,33 @@ export function SettingsModal({
     { code: 'es', name: 'Español', flag: '🇪🇸' },
   ];
 
+  const [groqKeyInput, setGroqKeyInput] = useState(() => getGroqApiKey() || '');
+  const [hasSavedGroqKey, setHasSavedGroqKey] = useState(() => Boolean(getGroqApiKey()));
+
   const handleLanguageSelect = (lng: string) => {
     i18n.changeLanguage(lng);
+    try {
+      localStorage.setItem('i18nextLng', lng);
+    } catch {}
+  };
+
+  const handleSaveGroqKey = () => {
+    if (groqKeyInput.trim()) {
+      setGroqApiKey(groqKeyInput.trim());
+      setHasSavedGroqKey(true);
+      toast.success('Chave Groq salva com sucesso! IA ultra-rápida ativada.');
+    } else {
+      setGroqApiKey(null);
+      setHasSavedGroqKey(false);
+      toast.info('Chave removida.');
+    }
+  };
+
+  const handleRemoveGroqKey = () => {
+    setGroqKeyInput('');
+    setGroqApiKey(null);
+    setHasSavedGroqKey(false);
+    toast.info('Chave Groq removida.');
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -286,7 +315,7 @@ export function SettingsModal({
 
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {languages.map((lng) => {
-                      const isSelected = i18n.language === lng.code;
+                      const isSelected = getAppLanguage(i18n.language) === lng.code;
                       return (
                         <button
                           key={lng.code}
@@ -294,7 +323,7 @@ export function SettingsModal({
                           onClick={() => handleLanguageSelect(lng.code)}
                           className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${
                             isSelected
-                              ? 'bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border-orange-400 dark:border-orange-800 shadow-sm ring-2 ring-orange-400/20'
+                              ? 'bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border-orange-400 dark:border-orange-800 shadow-sm ring-2 ring-orange-400/20 font-bold'
                               : 'bg-white dark:bg-neutral-800/80 text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
                           }`}
                         >
@@ -303,6 +332,65 @@ export function SettingsModal({
                         </button>
                       );
                     })}
+                  </div>
+                </div>
+
+                {/* AI Configuration Section (Groq / Gemini) */}
+                <div className="p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-800/40 border border-neutral-200/80 dark:border-neutral-700/50 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-orange-500" />
+                        <span>Configuração da IA (Groq - Llama 3.3)</span>
+                      </h4>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                        Insere a tua chave Groq para respostas instantâneas (~300ms) sem erros.
+                      </p>
+                    </div>
+                    <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                      hasSavedGroqKey
+                        ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800'
+                        : 'bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300'
+                    }`}>
+                      {hasSavedGroqKey ? 'Groq Ativa ⚡' : 'Modo Local'}
+                    </span>
+                  </div>
+
+                  <div className="space-y-2 pt-1">
+                    <div className="relative">
+                      <input
+                        type="password"
+                        value={groqKeyInput}
+                        onChange={(e) => setGroqKeyInput(e.target.value)}
+                        placeholder="Cola a tua chave Groq aqui (gsk_...)"
+                        className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      />
+                      <Key className="w-4 h-4 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 pt-1 flex-wrap">
+                      <span className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                        Chave gratuita em console.groq.com/keys
+                      </span>
+                      <div className="flex gap-2">
+                        {hasSavedGroqKey && (
+                          <button
+                            type="button"
+                            onClick={handleRemoveGroqKey}
+                            className="px-3 py-1.5 text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition-colors"
+                          >
+                            Remover
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={handleSaveGroqKey}
+                          className="px-3.5 py-1.5 text-xs font-semibold bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors shadow-sm active:scale-95"
+                        >
+                          Guardar Chave Groq
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

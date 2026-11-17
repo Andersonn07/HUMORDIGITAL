@@ -11,7 +11,9 @@
       "subtitle": "Chistes seleccionados para tu humor de hoy",
       "viewAll": "Ver todos"
     },
-    "changeLanguage": "Cambiar idioma"
+    "changeLanguage": "Cambiar idioma",
+    "dashboard": "Panel de Humor",
+    "ranking": "Ranking Cringe"
   },
   "censor": {
     "active": "Modo Adulto activo",
@@ -29,7 +31,11 @@
   "ageGate": {
     "title": "Contenido para Adultos",
     "subtitle": "Esta sección contiene chistes sobre",
-    "tags": ["Sexualidad", "Religión", "Humor Explícito"],
+    "tags": [
+      "Sexualidad",
+      "Religión",
+      "Humor Explícito"
+    ],
     "warning": "Este contenido está destinado a mayores de <0>18 años</0>. Al continuar, confirmas que tienes edad suficiente y consientes ver este tipo de humor.",
     "question": "¿Tienes 18 o más años?",
     "confirm": "Sí, tengo 18+ años — Entrar",
@@ -184,7 +190,37 @@
     "jokeLabel": "Tu Chiste",
     "jokePlaceholder": "Escribe aquí tu chiste más gracioso...",
     "cancel": "Cancelar",
-    "publish": "Publicar Chiste"
+    "publish": "Publicar Chiste",
+    "generate": "Generar con IA",
+    "generating": "Generando con IA...",
+    "customPromptLabel": "Tema o Pedido Personalizado",
+    "customPromptPlaceholder": "Ej: Un chiste corto sobre programadores, café o lunes...",
+    "quickSuggestionsLabel": "Sugerencias Rápidas:",
+    "styleLabel": "Estilo de Humor",
+    "surpriseMe": "🎲 Sorpréndeme",
+    "aiSuccessToast": "¡Chiste generado con éxito por la IA!",
+    "fallbackToast": "¡Chiste generado con el respaldo inteligente local!",
+    "apiKeyNote": "Consejo: Configura tu clave de Gemini en Ajustes para generación ilimitada.",
+    "sourceAI": "Creado por IA",
+    "sourceLocal": "Sugerencia Local",
+    "styles": {
+      "anedotas": "Anécdota Clásica",
+      "trocadilhos": "Juego de Palabras",
+      "secas": "Chiste Seco / Malo",
+      "inteligentes": "Nerd / Inteligente",
+      "observacionais": "Observacional"
+    },
+    "quickTags": {
+      "dev": "💻 Programador",
+      "coffee": "☕ Café",
+      "cat": "🐱 Gatos",
+      "work": "🏢 Trabajo",
+      "pizza": "🍕 Pizza",
+      "traffic": "🚗 Tráfico"
+    },
+    "promptLabel": "¿Qué tipo de chiste quieres?",
+    "promptPlaceholder": "Escribe el tema o tipo de chiste (ej: café y mañanas, programadores, suegra...)",
+    "generateAnother": "Generar Otro"
   },
   "jokeBattle": {
     "empty": {
@@ -396,6 +432,22 @@
       "contentDesc": "Los chistes y stickers de la comunidad son creados por los usuarios. Fomenta el respeto y el buen humor.",
       "appInfo": "RIBO — Versión 1.0.0",
       "madeWith": "Diseñado para el humor inteligente y la privacidad."
+    },
+    "ai": {
+      "tab": "Inteligencia Artificial",
+      "title": "Configuración de IA (Gemini)",
+      "subtitle": "Introduce tu clave de API de Google Gemini para desbloquear la generación personalizada en tiempo real.",
+      "keyLabel": "Clave de API Gemini (Google AI Studio)",
+      "keyPlaceholder": "Pega tu clave aquí (AIzaSy...)",
+      "saveKey": "Guardar Clave",
+      "removeKey": "Eliminar Clave",
+      "statusActive": "Clave de API activa",
+      "statusInactive": "Usando modo local inteligente (sin clave)",
+      "helpText": "Puedes obtener una clave gratuita en aistudio.google.com"
     }
+  },
+  "moodBanner": {
+    "title": "Humor del Día",
+    "description": "Elige tu estado de ánimo para hoy."
   }
 }

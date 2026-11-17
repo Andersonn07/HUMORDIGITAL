@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../models/joke.dart';
 import '../models/mood.dart';
 import '../models/sticker.dart';
+import 'groq_service.dart';
 import 'storage_service.dart';
 
 class JokeService {
@@ -206,33 +207,19 @@ class JokeService {
     await storage.setUserJokes(userJokes);
   }
 
-  // AI Joke Generator (intelligent random synthesis based on category)
-  Future<String> generateJokeWithAI(String category) async {
-    await Future.delayed(const Duration(milliseconds: 600));
-    final Map<String, List<String>> aiJokes = {
-      'ti': [
-        'Existem 10 tipos de pessoas no mundo: as que entendem binário e as que não entendem.',
-        'Um programador vai ao mercado. A esposa diz: "Compre um pacote de pão. Se tiver ovos, traga 6". Ele voltou com 6 pacotes de pão.',
-        'Qual o café preferido do desenvolvedor? O Java!',
-      ],
-      'trocadilhos': [
-        'Você sabe qual é o prato favorito do Thor? A Thorta de maçã!',
-        'O que o zero disse para o oito? "Belo cinto!"',
-        'Por que o jacaré tirou o filho da escola? Porque ele réptil de ano!',
-      ],
-      'anedotas': [
-        'O filho chega pro pai e diz: "Pai, é verdade que a ignorância traz felicidade?" O pai responde: "Não sei e não quero saber!"',
-        'Por que o peixe não usa computador? Porque ele tem medo da rede!',
-        'O que o tomate foi fazer no banco? Foi tirar extrato!',
-      ],
-      'secas': [
-        'Qual é a tecla preferida do astronauta? A barra de espaço.',
-        'O que uma impressora falou para a outra? "Essa folha é sua ou é impressão minha?"',
-      ],
-    };
-
-    final list = aiJokes[category] ?? aiJokes['anedotas']!;
-    return list[Random().nextInt(list.length)];
+  // AI Joke Generator (Groq ultra-fast API + semantic fallback)
+  Future<GroqJokeResult> generateJokeWithAI({
+    String prompt = '',
+    String category = 'anedotas',
+  }) async {
+    final lang = storage.getLanguage();
+    final customApiKey = storage.getGroqApiKey();
+    return await GroqService.generateJoke(
+      prompt: prompt,
+      category: category,
+      language: lang,
+      customApiKey: customApiKey,
+    );
   }
 
   // Stickers management

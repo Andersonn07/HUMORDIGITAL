@@ -20,6 +20,7 @@ class StorageService {
   static const _keyRecentStickers = 'recentStickerIds';
   static const _keyJokeStickerReactions = 'jokeStickerReactions';
   static const _keyMoodEntries = 'moodEntries';
+  static const _keyGroqApiKey = 'groqApiKey';
 
   late SharedPreferences _prefs;
 
@@ -232,6 +233,15 @@ class StorageService {
 
   String getLanguage() => _prefs.getString(_keyLanguage) ?? 'pt';
   Future<void> setLanguage(String lang) => _prefs.setString(_keyLanguage, lang);
+
+  String? getGroqApiKey() => _prefs.getString(_keyGroqApiKey);
+  Future<void> setGroqApiKey(String? key) async {
+    if (key == null || key.trim().isEmpty) {
+      await _prefs.remove(_keyGroqApiKey);
+    } else {
+      await _prefs.setString(_keyGroqApiKey, key.trim());
+    }
+  }
 
   String? getTodayMoodId(String todayKey) {
     final savedKey = _prefs.getString(_keyMoodDayKey);

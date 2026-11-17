@@ -2,6 +2,7 @@ import { Joke } from '../data/jokes';
 import { Heart, ThumbsUp, Trash2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
+import { getAppLanguage } from '../../i18n/utils';
 
 interface FavoritesListProps {
   jokes: Joke[];
@@ -43,7 +44,7 @@ export function FavoritesList({ jokes, likedJokes, onLike, onFavorite }: Favorit
 
             {/* Conteúdo */}
             <p className="text-neutral-800 dark:text-neutral-100 text-base leading-relaxed mb-5">
-              {typeof joke.content === 'string' ? joke.content : (joke.content[i18n.language as keyof typeof joke.content] || joke.content.pt)}
+              {typeof joke.content === 'string' ? joke.content : (joke.content[getAppLanguage(i18n.language)] || joke.content.pt)}
             </p>
 
             {/* Ações */}

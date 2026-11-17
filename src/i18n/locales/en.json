@@ -200,7 +200,37 @@
     "jokeLabel": "Your Joke",
     "jokePlaceholder": "Write your funniest joke here...",
     "cancel": "Cancel",
-    "publish": "Publish Joke"
+    "publish": "Publish Joke",
+    "generate": "Generate with AI",
+    "generating": "Generating with AI...",
+    "customPromptLabel": "Custom Theme or Prompt",
+    "customPromptPlaceholder": "E.g.: A short joke about developers, coffee, or Mondays...",
+    "quickSuggestionsLabel": "Quick Suggestions:",
+    "styleLabel": "Humor Style",
+    "surpriseMe": "🎲 Surprise Me",
+    "aiSuccessToast": "Joke generated successfully with AI!",
+    "fallbackToast": "Joke generated via local smart fallback!",
+    "apiKeyNote": "Tip: Add your Gemini key in Settings for unlimited custom AI generation.",
+    "sourceAI": "Created by AI",
+    "sourceLocal": "Local Suggestion",
+    "styles": {
+      "anedotas": "Classic Joke",
+      "trocadilhos": "Pun / Wordplay",
+      "secas": "Dad Joke / Dry Humor",
+      "inteligentes": "Nerd / Witty",
+      "observacionais": "Observational"
+    },
+    "quickTags": {
+      "dev": "💻 Developer",
+      "coffee": "☕ Coffee",
+      "cat": "🐱 Cats",
+      "work": "🏢 Office / Work",
+      "pizza": "🍕 Pizza",
+      "traffic": "🚗 Traffic"
+    },
+    "promptLabel": "What kind of joke do you want?",
+    "promptPlaceholder": "Type the topic or type of joke (e.g. coffee and mornings, tech, office life...)",
+    "generateAnother": "Generate Another"
   },
   "jokeBattle": {
     "empty": {
@@ -402,6 +432,22 @@
       "contentDesc": "Community jokes and custom stickers are created by users. Keep it fun and respectful.",
       "appInfo": "RIBO — Version 1.0.0",
       "madeWith": "Built for intelligent humor and user privacy."
+    },
+    "ai": {
+      "tab": "Artificial Intelligence",
+      "title": "AI Setup (Gemini)",
+      "subtitle": "Enter your Google Gemini API key to unlock real-time custom joke generation.",
+      "keyLabel": "Gemini API Key (Google AI Studio)",
+      "keyPlaceholder": "Paste your key here (AIzaSy...)",
+      "saveKey": "Save Key",
+      "removeKey": "Remove Key",
+      "statusActive": "API key is active",
+      "statusInactive": "Using local smart fallback mode (no key)",
+      "helpText": "You can get a free key at aistudio.google.com"
     }
+  },
+  "moodBanner": {
+    "title": "Mood of the Day",
+    "description": "Choose your mood for today."
   }
 }

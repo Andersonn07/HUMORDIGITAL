@@ -108,13 +108,17 @@ class _BattleScreenState extends State<BattleScreen> {
                                   ),
                                 ),
                               ),
-                              const Spacer(),
-                              Text(
-                                'Por ${joke.author}',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontStyle: FontStyle.italic,
-                                  color: theme.hintColor,
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Por ${joke.author}',
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontStyle: FontStyle.italic,
+                                    color: theme.hintColor,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               const SizedBox(width: 6),
@@ -138,8 +142,10 @@ class _BattleScreenState extends State<BattleScreen> {
                             ),
                           ),
                           const SizedBox(height: 14),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                          Wrap(
+                            alignment: WrapAlignment.end,
+                            spacing: 8,
+                            runSpacing: 8,
                             children: [
                               // Fire Button
                               ElevatedButton.icon(
@@ -163,7 +169,6 @@ class _BattleScreenState extends State<BattleScreen> {
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                                 ),
                               ),
-                              const SizedBox(width: 8),
                               // Trash Button
                               ElevatedButton.icon(
                                 onPressed: () async {

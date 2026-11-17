@@ -11,7 +11,9 @@
       "subtitle": "Piadas selecionadas para o teu humor de hoje",
       "viewAll": "Ver todas"
     },
-    "changeLanguage": "Mudar idioma"
+    "changeLanguage": "Mudar idioma",
+    "dashboard": "Painel de Humor",
+    "ranking": "Ranking Cringe"
   },
   "censor": {
     "active": "Modo Adulto ativo",
@@ -29,7 +31,11 @@
   "ageGate": {
     "title": "Conteúdo para Adultos",
     "subtitle": "Esta secção contém piadas sobre",
-    "tags": ["Sexualidade", "Religião", "Humor Explícito"],
+    "tags": [
+      "Sexualidade",
+      "Religião",
+      "Humor Explícito"
+    ],
     "warning": "Este conteúdo é destinado a maiores de <0>18 anos</0>. Ao continuar, confirmas que tens idade suficiente e consentes em visualizar este tipo de humor.",
     "question": "Tens 18 ou mais anos?",
     "confirm": "Sim, tenho 18+ anos — Entrar",
@@ -186,7 +192,35 @@
     "cancel": "Cancelar",
     "publish": "Publicar Piada",
     "generate": "Gerar com IA",
-    "generating": "Gerando..."
+    "generating": "A gerar com IA...",
+    "customPromptLabel": "Tema ou Pedido Personalizado",
+    "customPromptPlaceholder": "Ex: Uma piada curta sobre programadores, café ou segunda-feira...",
+    "quickSuggestionsLabel": "Sugestões Rápidas:",
+    "styleLabel": "Estilo de Humor",
+    "surpriseMe": "🎲 Surpreende-me",
+    "aiSuccessToast": "Piada gerada com sucesso pela IA!",
+    "fallbackToast": "Piada criada através do gerador inteligente local!",
+    "apiKeyNote": "Dica: Configura a tua chave Gemini nas Definições para geração personalizada ilimitada.",
+    "sourceAI": "Criada por IA",
+    "sourceLocal": "Sugestão Local",
+    "styles": {
+      "anedotas": "Anedota Clássica",
+      "trocadilhos": "Trocadilho / Jogo de Palavras",
+      "secas": "Piada Seca / Dad Joke",
+      "inteligentes": "Nerd / Inteligente",
+      "observacionais": "Humor de Observação"
+    },
+    "quickTags": {
+      "dev": "💻 Programador",
+      "coffee": "☕ Café",
+      "cat": "🐱 Gatos",
+      "work": "🏢 Trabalho",
+      "pizza": "🍕 Pizza",
+      "traffic": "🚗 Trânsito"
+    },
+    "promptLabel": "Que tipo de piada queres?",
+    "promptPlaceholder": "Escreve aqui o tema ou tipo de piada (ex: café e manhãs, sogra, programadores...)",
+    "generateAnother": "Gerar Outra Piada"
   },
   "jokeBattle": {
     "empty": {
@@ -402,6 +436,18 @@
       "contentDesc": "As piadas submetidas na comunidade e figurinhas criadas são geradas por utilizadores. Incentive o bom humor e respeito mútuo.",
       "appInfo": "RIBO — Versão 1.0.0",
       "madeWith": "Desenvolvido com foco em humor inteligente e privacidade."
+    },
+    "ai": {
+      "tab": "Inteligência Artificial",
+      "title": "Configuração da IA (Gemini)",
+      "subtitle": "Insere a tua chave de API do Google Gemini para desbloquear geração personalizada em tempo real.",
+      "keyLabel": "Chave da API Gemini (Google AI Studio)",
+      "keyPlaceholder": "Cola aqui a tua chave (AIzaSy...)",
+      "saveKey": "Guardar Chave",
+      "removeKey": "Remover Chave",
+      "statusActive": "Chave de API ativa",
+      "statusInactive": "A usar modo local inteligente (sem chave)",
+      "helpText": "Podes obter uma chave gratuita em aistudio.google.com"
     }
   }
 }

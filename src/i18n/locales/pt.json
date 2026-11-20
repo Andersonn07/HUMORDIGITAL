@@ -437,6 +437,7 @@
       "appInfo": "RIBO — Versão 1.0.0",
       "madeWith": "Desenvolvido com foco em humor inteligente e privacidade."
     },
+    "aiNotice": "Usamos uma API de Inteligência Artificial para gerar piadas personalizadas em tempo real.",
     "ai": {
       "tab": "Inteligência Artificial",
       "title": "Configuração da IA (Gemini)",

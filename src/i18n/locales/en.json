@@ -433,6 +433,7 @@
       "appInfo": "RIBO — Version 1.0.0",
       "madeWith": "Built for intelligent humor and user privacy."
     },
+    "aiNotice": "We use an AI API to generate custom jokes in real time.",
     "ai": {
       "tab": "Artificial Intelligence",
       "title": "AI Setup (Gemini)",

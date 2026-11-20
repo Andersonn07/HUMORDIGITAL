@@ -28,44 +28,6 @@ class _BattleScreenState extends State<BattleScreen> {
               jokeService: widget.jokeService,
               onJokeCreated: () => setState(() {}),
             ),
-            const SizedBox(height: 20),
-
-            // Battle Header Banner
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.orange.shade700.withValues(alpha: 0.12),
-                    Colors.red.shade700.withValues(alpha: 0.08),
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.orange.shade300.withValues(alpha: 0.5)),
-              ),
-              child: const Row(
-                children: [
-                  Text('⚔️', style: TextStyle(fontSize: 28)),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Arena da Batalha',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          'Vote nas piadas da comunidade: 🔥 Braba ou 🗑️ Lixo!',
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(height: 16),
 
             // Jokes List

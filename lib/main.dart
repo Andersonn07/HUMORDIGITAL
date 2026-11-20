@@ -15,6 +15,11 @@ import 'widgets/settings_dialog.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Oculta barras feias de aviso visual de overflow
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return const SizedBox.shrink();
+  };
+
   final storage = StorageService();
   await storage.init();
 
@@ -215,7 +220,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final favCount = widget.jokeService.favorites.length;
     final totalVotesCount = widget.jokeService.votes.values
         .fold(0, (sum, v) => sum + (v['funny'] ?? 0) + (v['cringe'] ?? 0));
@@ -249,71 +253,29 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       appBar: AppBar(
         titleSpacing: 16,
         title: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               widget.darkMode ? 'assets/ribo-logo-dark.png' : 'assets/ribo-logo-light.png',
-              height: 34,
-              errorBuilder: (context, error, stackTrace) => const Text('🎭', style: TextStyle(fontSize: 24)),
+              height: 32,
+              errorBuilder: (context, error, stackTrace) => const Text('🎭', style: TextStyle(fontSize: 22)),
             ),
-            const SizedBox(width: 10),
-            const Flexible(
-              child: Text(
-                'RIBO',
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20, letterSpacing: 0.5),
-                overflow: TextOverflow.ellipsis,
-              ),
+            const SizedBox(width: 8),
+            const Text(
+              'RIBO',
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19, letterSpacing: 0.5),
             ),
           ],
         ),
         actions: [
-          // Mood Badge button
-          TextButton.icon(
-            onPressed: _openMoodDialog,
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-            ),
+          // Mood Selector Button (compact emoji)
+          IconButton(
+            tooltip: widget.todayMood?.label ?? 'Humor de Hoje',
             icon: Text(
               widget.todayMood?.emoji ?? '😄',
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 20),
             ),
-            label: Text(
-              widget.todayMood?.label ?? 'Humor',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: theme.textTheme.bodyMedium?.color,
-              ),
-            ),
-          ),
-
-          // Censorship Mode toggle button
-          IconButton(
-            tooltip: widget.censorMode ? 'Modo +18 Desativado' : 'Modo +18 Ativado',
-            icon: Icon(
-              widget.censorMode ? Icons.shield_rounded : Icons.lock_open_rounded,
-              color: widget.censorMode ? Colors.green : Colors.redAccent,
-            ),
-            onPressed: _handleCensorToggle,
-          ),
-
-          // Language Selector
-          PopupMenuButton<String>(
-            tooltip: 'Idioma',
-            icon: const Icon(Icons.language_rounded, size: 22),
-            initialValue: widget.language,
-            onSelected: widget.onSetLanguage,
-            itemBuilder: (context) => const [
-              PopupMenuItem(value: 'pt', child: Text('🇵🇹 / 🇧🇷 Português')),
-              PopupMenuItem(value: 'en', child: Text('🇺🇸 English')),
-              PopupMenuItem(value: 'es', child: Text('🇪🇸 Español')),
-            ],
-          ),
-
-          // Settings button
-          IconButton(
-            tooltip: 'Configurações & Privacidade',
-            icon: const Icon(Icons.settings_rounded, size: 22, color: Color(0xFFFF5722)),
-            onPressed: _openSettingsDialog,
+            onPressed: _openMoodDialog,
           ),
 
           // Dark Mode Toggle
@@ -325,64 +287,19 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             ),
             onPressed: widget.onToggleDarkMode,
           ),
-          const SizedBox(width: 4),
+
+          // Settings Button (contains Language, +18 Filter, Groq API, Backup)
+          IconButton(
+            tooltip: 'Configurações',
+            icon: const Icon(Icons.settings_rounded, size: 22, color: Color(0xFFFF5722)),
+            onPressed: _openSettingsDialog,
+          ),
+          const SizedBox(width: 6),
         ],
       ),
-      body: Column(
-        children: [
-          // Banner Adult Mode when active
-          if (!widget.censorMode)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              color: Colors.red.withValues(alpha: 0.12),
-              child: Row(
-                children: [
-                  const Text('🔞', style: TextStyle(fontSize: 18)),
-                  const SizedBox(width: 8),
-                  const Expanded(
-                    child: Text(
-                      'Modo Adulto (+18) ativo: piadas sem censura e humor negro liberados.',
-                      style: TextStyle(fontSize: 12, color: Colors.redAccent, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: _handleCensorToggle,
-                    child: const Text('Reativar Censura', style: TextStyle(fontSize: 11, color: Colors.redAccent)),
-                  ),
-                ],
-              ),
-            ),
-
-          // Mood Banner
-          if (widget.todayMood != null && _selectedCategory == widget.todayMood!.suggestedCategory)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              color: const Color(0xFFFF5722).withValues(alpha: 0.1),
-              child: Row(
-                children: [
-                  Text(widget.todayMood!.emoji, style: const TextStyle(fontSize: 18)),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'Modo ${widget.todayMood!.label}: ${widget.todayMood!.suggestion}',
-                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () => setState(() => _selectedCategory = 'todas'),
-                    child: const Text('Ver Todas', style: TextStyle(fontSize: 11)),
-                  ),
-                ],
-              ),
-            ),
-
-          Expanded(
-            child: IndexedStack(
-              index: _currentTabIndex,
-              children: tabs,
-            ),
-          ),
-        ],
+      body: IndexedStack(
+        index: _currentTabIndex,
+        children: tabs,
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentTabIndex,

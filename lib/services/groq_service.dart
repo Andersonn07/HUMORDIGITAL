@@ -209,22 +209,6 @@ class GroqService {
         ? customApiKey.trim()
         : defaultApiKey;
 
-    if (apiKey.isEmpty) {
-      final thematic = findThematicJoke(lang, promptText);
-      if (thematic != null) {
-        return GroqJokeResult(
-          text: thematic,
-          source: 'fallback',
-          language: lang,
-        );
-      }
-      return GroqJokeResult(
-        text: getRandomFallbackJoke(lang),
-        source: 'fallback',
-        language: lang,
-      );
-    }
-
     String promptText = prompt.trim();
     if (promptText.isEmpty) {
       switch (category) {
@@ -243,6 +227,22 @@ class GroqService {
         default:
           promptText = lang == 'en' ? 'everyday funny life' : (lang == 'es' ? 'situaciones graciosas de la vida cotidiana' : 'situações engraçadas do dia a dia');
       }
+    }
+
+    if (apiKey.isEmpty) {
+      final thematic = findThematicJoke(lang, promptText);
+      if (thematic != null) {
+        return GroqJokeResult(
+          text: thematic,
+          source: 'fallback',
+          language: lang,
+        );
+      }
+      return GroqJokeResult(
+        text: getRandomFallbackJoke(lang),
+        source: 'fallback',
+        language: lang,
+      );
     }
 
     final langRules = {
@@ -283,7 +283,7 @@ Regras obrigatórias:
 
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body);
-          final rawContent = data['choices']?[0]?['message']?['content']?.toString()?.trim();
+          final rawContent = data['choices']?[0]?['message']?['content']?.toString().trim();
           if (rawContent != null && rawContent.isNotEmpty) {
             final cleaned = rawContent
                 .replaceAll(RegExp(r'^["\s]+'), '')
